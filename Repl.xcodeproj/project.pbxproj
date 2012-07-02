@@ -21,12 +21,12 @@
 		682EB1C415A1E1A60060AC31 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		682EB1C515A1E1A60060AC31 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		682EB1C615A1E1A60060AC31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		682EB1C915A1E1A60060AC31 /* Repl-Info.plist */ = {isa = PBXFileReference; path = "Repl-Info.plist"; sourceTree = "<group>"; };
+		682EB1C915A1E1A60060AC31 /* Repl-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Repl-Info.plist"; sourceTree = "<group>"; };
 		682EB1CB15A1E1A60060AC31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		682EB1CD15A1E1A60060AC31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		682EB1CF15A1E1A60060AC31 /* Repl-Prefix.pch */ = {isa = PBXFileReference; path = "Repl-Prefix.pch"; sourceTree = "<group>"; };
+		682EB1CF15A1E1A60060AC31 /* Repl-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Repl-Prefix.pch"; sourceTree = "<group>"; };
 		682EB1D115A1E1A60060AC31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		682EB1D315A1E1A60060AC31 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		682EB1D315A1E1A60060AC31 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		682EB1D415A1E1A60060AC31 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		682EB1D715A1E1A60060AC31 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
