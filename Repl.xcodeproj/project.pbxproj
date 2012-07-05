@@ -33,6 +33,7 @@
 		682EB1D715A1E1A60060AC31 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		682EB1F615A2ED3D0060AC31 /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
 		682EB1F715A2ED3D0060AC31 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
+		68C7FCE515A5A3B100B94DF5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +151,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
 			);
 			mainGroup = 682EB1B215A1E1A60060AC31;
 			productRefGroup = 682EB1BE15A1E1A60060AC31 /* Products */;
@@ -209,6 +211,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				682EB1D715A1E1A60060AC31 /* en */,
+				68C7FCE515A5A3B100B94DF5 /* ru */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
