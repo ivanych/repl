@@ -43,7 +43,7 @@
 				<array class="NSMutableArray" key="NSMenuItems">
 					<object class="NSMenuItem" id="628186410">
 						<reference key="NSMenu" ref="435703531"/>
-						<string key="NSTitle">Item 1</string>
+						<string key="NSTitle">Open...</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<object class="NSCustomResource" key="NSOnImage" id="779621055">
@@ -54,14 +54,6 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">NSMenuMixedState</string>
 						</object>
-					</object>
-					<object class="NSMenuItem" id="256686698">
-						<reference key="NSMenu" ref="435703531"/>
-						<string key="NSTitle">Item 2</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="779621055"/>
-						<reference key="NSMixedImage" ref="969624558"/>
 					</object>
 					<object class="NSMenuItem" id="437032543">
 						<reference key="NSMenu" ref="435703531"/>
@@ -142,7 +134,6 @@
 						<reference key="object" ref="435703531"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="628186410"/>
-							<reference ref="256686698"/>
 							<reference ref="437032543"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -150,11 +141,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">537</int>
 						<reference key="object" ref="628186410"/>
-						<reference key="parent" ref="435703531"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">538</int>
-						<reference key="object" ref="256686698"/>
 						<reference key="parent" ref="435703531"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -172,7 +158,6 @@
 				<string key="494.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="536.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="537.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="538.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="539.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
