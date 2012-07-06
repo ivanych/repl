@@ -30,4 +30,50 @@
     [statusItem setToolTip:@"Repl"];
 }
 
+// Открыть файлы
+- (IBAction)openFile:(id)sender {
+    
+    // Создать диалог открытия файлов
+    NSOpenPanel *fileDialog = [NSOpenPanel openPanel];
+    
+    // Свойства диалога
+    [fileDialog setCanChooseFiles:YES];
+    [fileDialog setCanChooseDirectories:YES];
+    [fileDialog setAllowsMultipleSelection:YES];
+    
+    // Вывести диалог
+    // Если запуск вернул нажатие кнопки OK - обработать выбранные файлы
+    if ( [fileDialog runModal] == NSFileHandlingPanelOKButton ) {
+        
+        // Список выбранных файлов (url)
+        NSArray *urls = [fileDialog URLs];
+        
+        // Показать выбранные файлы
+        //NSAlert *alert = [[NSAlert alloc] init];
+        //[alert setMessageText:[files componentsJoinedByString:@",\n"]];
+        //[alert runModal];
+        
+        // Обход дерева файлов
+        NSFileManager *fileManager = [[NSFileManager alloc] init];
+        BOOL isDir;
+        
+        for(NSURL *url in urls) {
+            NSLog(@"%@", url);
+            
+            // Берем из URL только путь к файлу
+            NSString *path = [url path];
+            NSLog(@"%@", path);
+            
+            // Если файл является каталогом
+            if ([fileManager fileExistsAtPath:path isDirectory:&isDir] && isDir) {
+                NSLog(@"dir");
+            }
+            // Если файл является файлом
+            else {
+                NSLog(@"not dir");
+            }
+        }
+    }
+}
+
 @end
