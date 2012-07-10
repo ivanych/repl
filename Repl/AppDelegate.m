@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Three.h"
 
 @implementation AppDelegate
 
@@ -54,24 +55,19 @@
         //[alert runModal];
         
         // Обход дерева файлов
-        NSFileManager *fileManager = [[NSFileManager alloc] init];
-        BOOL isDir;
+        //NSFileManager *fileManager = [[NSFileManager alloc] init];
+        //BOOL isDir;
+        
+        Three *three = [[Three alloc] init];
         
         for(NSURL *url in urls) {
             NSLog(@"%@", url);
             
             // Берем из URL только путь к файлу
             NSString *path = [url path];
-            NSLog(@"%@", path);
             
-            // Если файл является каталогом
-            if ([fileManager fileExistsAtPath:path isDirectory:&isDir] && isDir) {
-                NSLog(@"dir");
-            }
-            // Если файл является файлом
-            else {
-                NSLog(@"not dir");
-            }
+            // Обход дерева
+            [three getPath:path];
         }
     }
 }
