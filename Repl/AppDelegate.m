@@ -49,25 +49,28 @@
         // Список выбранных файлов (url)
         NSArray *urls = [fileDialog URLs];
         
-        // Показать выбранные файлы
-        //NSAlert *alert = [[NSAlert alloc] init];
-        //[alert setMessageText:[files componentsJoinedByString:@",\n"]];
-        //[alert runModal];
+        // Находим меню треков (тег "1" для пункта меню треков задан в редакторе, в файле интерфейса)
+        NSMenuItem * trackMenuItem = [statusMenu itemWithTag:1];
+        NSMenu * trackMenu = [trackMenuItem submenu];
         
-        // Обход дерева файлов
-        //NSFileManager *fileManager = [[NSFileManager alloc] init];
-        //BOOL isDir;
+        // Разблокируем пункт меню треков
+        [trackMenuItem setEnabled:YES];
         
+        // Очищаем меню треков от предыдущего содержимого
+        [trackMenu removeAllItems];
+        
+        // Дерево файлов
         Three *three = [[Three alloc] init];
         
+        // Читаем все выбранные файлы
         for(NSURL *url in urls) {
-            NSLog(@"%@", url);
+            NSLog(@"URL:=  %@", url);
             
             // Берем из URL только путь к файлу
             NSString *path = [url path];
             
-            // Обход дерева
-            [three getPath:path];
+            // Обход дерева файлов
+            [three getPath:path forMenu:trackMenu];
         }
     }
 }
