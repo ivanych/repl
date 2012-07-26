@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Three.h"
 
 @implementation AppDelegate
 
@@ -28,6 +29,50 @@
     [statusItem setAlternateImage:statusImage2];
     [statusItem setHighlightMode:YES];
     [statusItem setToolTip:@"Repl"];
+}
+
+// Открыть файлы
+- (IBAction)openFile:(id)sender {
+    
+    // Создать диалог открытия файлов
+    NSOpenPanel *fileDialog = [NSOpenPanel openPanel];
+    
+    // Свойства диалога
+    [fileDialog setCanChooseFiles:YES];
+    [fileDialog setCanChooseDirectories:YES];
+    [fileDialog setAllowsMultipleSelection:YES];
+    
+    // Вывести диалог
+    // Если запуск вернул нажатие кнопки OK - обработать выбранные файлы
+    if ( [fileDialog runModal] == NSFileHandlingPanelOKButton ) {
+        
+        // Список выбранных файлов (url)
+        NSArray *urls = [fileDialog URLs];
+        
+        // Находим меню треков (тег "1" для пункта меню треков задан в редакторе, в файле интерфейса)
+        NSMenuItem * trackMenuItem = [statusMenu itemWithTag:1];
+        NSMenu * trackMenu = [trackMenuItem submenu];
+        
+        // Разблокируем пункт меню треков
+        [trackMenuItem setEnabled:YES];
+        
+        // Очищаем меню треков от предыдущего содержимого
+        [trackMenu removeAllItems];
+        
+        // Дерево файлов
+        Three *three = [[Three alloc] init];
+        
+        // Читаем все выбранные файлы
+        for(NSURL *url in urls) {
+            NSLog(@"URL:=  %@", url);
+            
+            // Берем из URL только путь к файлу
+            NSString *path = [url path];
+            
+            // Обход дерева файлов
+            [three getPath:path forMenu:trackMenu];
+        }
+    }
 }
 
 @end
