@@ -148,7 +148,7 @@
 		682EB1B415A1E1A60060AC31 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 682EB1B715A1E1A60060AC31 /* Build configuration list for PBXProject "Repl" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -275,6 +275,7 @@
 		682EB1DC15A1E1A60060AC31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Repl/Repl-Prefix.pch";
 				INFOPLIST_FILE = "Repl/Repl-Info.plist";
@@ -286,6 +287,7 @@
 		682EB1DD15A1E1A60060AC31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Repl/Repl-Prefix.pch";
 				INFOPLIST_FILE = "Repl/Repl-Info.plist";
