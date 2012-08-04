@@ -10,6 +10,6 @@
 
 @interface Three : NSObject
 
-- (void)getPath:(id)path forMenu:(id)menu;
+- (void)getPath:(id)path forMenu:(id)menu toList:(id)list;
 
 @end
