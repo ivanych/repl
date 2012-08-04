@@ -16,6 +16,7 @@
 		682EB1F815A2ED3D0060AC31 /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 682EB1F615A2ED3D0060AC31 /* icon1.png */; };
 		682EB1F915A2ED3D0060AC31 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 682EB1F715A2ED3D0060AC31 /* icon2.png */; };
 		686CBCCE15AC56370059F046 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 686CBCCD15AC56370059F046 /* Three.m */; };
+		68DC2E5F15C861F0004E3F54 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DC2E5E15C861F0004E3F54 /* List.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		686CBCCC15AC56370059F046 /* Three.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Three.h; sourceTree = "<group>"; };
 		686CBCCD15AC56370059F046 /* Three.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Three.m; sourceTree = "<group>"; };
 		68C7FCE515A5A3B100B94DF5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		68DC2E5D15C861F0004E3F54 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
+		68DC2E5E15C861F0004E3F54 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 				682EB1D415A1E1A60060AC31 /* AppDelegate.m */,
 				686CBCCC15AC56370059F046 /* Three.h */,
 				686CBCCD15AC56370059F046 /* Three.m */,
+				68DC2E5D15C861F0004E3F54 /* List.h */,
+				68DC2E5E15C861F0004E3F54 /* List.m */,
 				682EB1D615A1E1A60060AC31 /* MainMenu.xib */,
 				682EB1F415A2ED300060AC31 /* Icon */,
 				682EB1C815A1E1A60060AC31 /* Supporting Files */,
@@ -191,6 +196,7 @@
 				682EB1CE15A1E1A60060AC31 /* main.m in Sources */,
 				682EB1D515A1E1A60060AC31 /* AppDelegate.m in Sources */,
 				686CBCCE15AC56370059F046 /* Three.m in Sources */,
+				68DC2E5F15C861F0004E3F54 /* List.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

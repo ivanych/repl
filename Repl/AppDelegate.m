@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Three.h"
 
+
 @implementation AppDelegate
 
 // Инициализация приложения
@@ -62,6 +63,9 @@
         // Дерево файлов
         Three *three = [[Three alloc] init];
         
+        // Список треков
+        trackList = [[List alloc] init];
+        
         // Читаем все выбранные файлы
         for(NSURL *url in urls) {
             NSLog(@"URL:=  %@", url);
@@ -70,9 +74,18 @@
             NSString *path = [url path];
             
             // Обход дерева файлов
-            [three getPath:path forMenu:trackMenu];
+            [three getPath:path forMenu:trackMenu toList:trackList];
         }
     }
+}
+
+// Запустить трек
+- (IBAction)playTrack:(id)sender {
+    NSLog(@"%ld - %@",[sender tag], [trackList track:[sender tag]]);
+    
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:[NSString stringWithFormat:@"%ld - %@", [sender tag], [trackList track:[sender tag]]]];
+    [alert runModal];
 }
 
 @end

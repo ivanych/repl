@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "List.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     // Графический интерфейс приложения (меню)
@@ -18,6 +19,9 @@
     // Основная и дополнительная иконки приложения
     NSImage *statusImage1;
     NSImage *statusImage2;
+    
+    // Список треков
+    List *trackList;
 }
 
 @end

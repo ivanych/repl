@@ -7,11 +7,11 @@
 //
 
 #import "Three.h"
-
+#import "List.h"
 
 @implementation Three
 
-- (void)getPath:(id)path forMenu:(id)menu {
+- (void)getPath:(id)path forMenu:(id)menu toList:(id)list {
     // Пропускаем скрытые файлы
     NSRange isHidden = [path rangeOfString:@"/."];
     if (isHidden.length) {
@@ -48,15 +48,19 @@
             // Полный путь к файлу каталога
             NSString *fullpath = [NSString stringWithFormat:@"%@/%@", path, d];
             
-            [self getPath:fullpath forMenu:subMenu];
+            [self getPath:fullpath forMenu:subMenu toList:list];
         }
     }
     // Если файл является файлом
     else {
         NSLog(@"file: %@", path);
         
+        // Добавляем трек в список
+        NSUInteger nTrack = [list addTrack:path];
+        
         // Создаем пунт меню
-        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:fileName action:nil keyEquivalent:@""];
+        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:fileName action:@selector(playTrack:) keyEquivalent:@""];
+        [menuItem setTag:nTrack];
         [menu addItem:menuItem];
         
         NSLog(@"menu title: %@", [menu title]);
