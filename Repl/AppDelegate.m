@@ -31,8 +31,8 @@
     [statusItem setHighlightMode:YES];
     [statusItem setToolTip:@"Repl"];
     
-    // Объект для работы со звуком
-    _sound = [NSSound alloc];
+    // Объект для работы с воспроизведением файлов
+    _player = [[Player alloc] init];
 }
 
 // Открыть файлы
@@ -86,12 +86,8 @@
 - (IBAction)playTrack:(id)sender {
     NSLog(@"%ld - %@",[sender tag], [trackList track:[sender tag]]);
     
-    if ([_sound isPlaying])
-        [_sound stop];
-    
     NSString *trackPath = [trackList track:[sender tag]];
-    _sound = [_sound initWithContentsOfFile:trackPath byReference:false];
-    [_sound play];
+    [_player play:trackPath];
 }
 
 @end
