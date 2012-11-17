@@ -22,6 +22,9 @@
     
     // Список треков
     List *trackList;
+    
+    // Объект для работы со звуком
+    NSSound *_sound;
 }
 
 @end

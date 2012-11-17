@@ -30,6 +30,9 @@
     [statusItem setAlternateImage:statusImage2];
     [statusItem setHighlightMode:YES];
     [statusItem setToolTip:@"Repl"];
+    
+    // Объект для работы со звуком
+    _sound = [NSSound alloc];
 }
 
 // Открыть файлы
@@ -83,9 +86,12 @@
 - (IBAction)playTrack:(id)sender {
     NSLog(@"%ld - %@",[sender tag], [trackList track:[sender tag]]);
     
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:[NSString stringWithFormat:@"%ld - %@", [sender tag], [trackList track:[sender tag]]]];
-    [alert runModal];
+    if ([_sound isPlaying])
+        [_sound stop];
+    
+    NSString *trackPath = [trackList track:[sender tag]];
+    _sound = [_sound initWithContentsOfFile:trackPath byReference:false];
+    [_sound play];
 }
 
 @end
