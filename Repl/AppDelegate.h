@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "List.h"
+#import "Player.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     // Графический интерфейс приложения (меню)
@@ -22,6 +23,9 @@
     
     // Список треков
     List *trackList;
+    
+    // Объект для работы с воспроизведением файлов
+    Player *_player;
 }
 
 @end

@@ -17,6 +17,8 @@
 		682EB1F915A2ED3D0060AC31 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 682EB1F715A2ED3D0060AC31 /* icon2.png */; };
 		686CBCCE15AC56370059F046 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 686CBCCD15AC56370059F046 /* Three.m */; };
 		68DC2E5F15C861F0004E3F54 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DC2E5E15C861F0004E3F54 /* List.m */; };
+		7164526C165841DC00B4C34A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 7164526B165841DC00B4C34A /* Player.m */; };
+		71BC4D7C1659F3EB00D753FE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BC4D7B1659F3EB00D753FE /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,9 @@
 		68C7FCE515A5A3B100B94DF5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		68DC2E5D15C861F0004E3F54 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
 		68DC2E5E15C861F0004E3F54 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
+		7164526A165841DC00B4C34A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		7164526B165841DC00B4C34A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		71BC4D7B1659F3EB00D753FE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71BC4D7C1659F3EB00D753FE /* AVFoundation.framework in Frameworks */,
 				682EB1C215A1E1A60060AC31 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,6 +63,7 @@
 		682EB1B215A1E1A60060AC31 = {
 			isa = PBXGroup;
 			children = (
+				71BC4D7B1659F3EB00D753FE /* AVFoundation.framework */,
 				682EB1C715A1E1A60060AC31 /* Repl */,
 				682EB1C015A1E1A60060AC31 /* Frameworks */,
 				682EB1BE15A1E1A60060AC31 /* Products */,
@@ -102,6 +109,8 @@
 				682EB1D615A1E1A60060AC31 /* MainMenu.xib */,
 				682EB1F415A2ED300060AC31 /* Icon */,
 				682EB1C815A1E1A60060AC31 /* Supporting Files */,
+				7164526A165841DC00B4C34A /* Player.h */,
+				7164526B165841DC00B4C34A /* Player.m */,
 			);
 			path = Repl;
 			sourceTree = "<group>";
@@ -197,6 +206,7 @@
 				682EB1D515A1E1A60060AC31 /* AppDelegate.m in Sources */,
 				686CBCCE15AC56370059F046 /* Three.m in Sources */,
 				68DC2E5F15C861F0004E3F54 /* List.m in Sources */,
+				7164526C165841DC00B4C34A /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

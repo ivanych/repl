@@ -30,6 +30,9 @@
     [statusItem setAlternateImage:statusImage2];
     [statusItem setHighlightMode:YES];
     [statusItem setToolTip:@"Repl"];
+    
+    // Объект для работы с воспроизведением файлов
+    _player = [[Player alloc] init];
 }
 
 // Открыть файлы
@@ -83,9 +86,8 @@
 - (IBAction)playTrack:(id)sender {
     NSLog(@"%ld - %@",[sender tag], [trackList track:[sender tag]]);
     
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:[NSString stringWithFormat:@"%ld - %@", [sender tag], [trackList track:[sender tag]]]];
-    [alert runModal];
+    NSString *trackPath = [trackList track:[sender tag]];
+    [_player play:trackPath];
 }
 
 @end
