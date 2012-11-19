@@ -7,15 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface Player : NSObject {
-    // объект для воспроизведения музыки
-    NSSound *_sound;
+@interface Player : NSObject
 
-    // текущий файл для воспроизведения
-    NSString *_currentFilePath;
-}
+// флаг воспроизведения файла в текущий момент
+@property bool is_playing;
 
+// Инициализация плеера
 - (id)init;
 
 // воспроизводит файл по пути filePath

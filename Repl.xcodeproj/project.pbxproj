@@ -18,6 +18,7 @@
 		686CBCCE15AC56370059F046 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 686CBCCD15AC56370059F046 /* Three.m */; };
 		68DC2E5F15C861F0004E3F54 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DC2E5E15C861F0004E3F54 /* List.m */; };
 		7164526C165841DC00B4C34A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 7164526B165841DC00B4C34A /* Player.m */; };
+		71BC4D7C1659F3EB00D753FE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BC4D7B1659F3EB00D753FE /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		68DC2E5E15C861F0004E3F54 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
 		7164526A165841DC00B4C34A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		7164526B165841DC00B4C34A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		71BC4D7B1659F3EB00D753FE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71BC4D7C1659F3EB00D753FE /* AVFoundation.framework in Frameworks */,
 				682EB1C215A1E1A60060AC31 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,6 +63,7 @@
 		682EB1B215A1E1A60060AC31 = {
 			isa = PBXGroup;
 			children = (
+				71BC4D7B1659F3EB00D753FE /* AVFoundation.framework */,
 				682EB1C715A1E1A60060AC31 /* Repl */,
 				682EB1C015A1E1A60060AC31 /* Frameworks */,
 				682EB1BE15A1E1A60060AC31 /* Products */,
