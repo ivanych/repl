@@ -30,6 +30,9 @@
     [statusItem setAlternateImage:statusImage2];
     [statusItem setHighlightMode:YES];
     [statusItem setToolTip:@"Repl"];
+    
+    // Плеер
+    player =[[Player alloc] init];
 }
 
 // Открыть файлы
@@ -81,11 +84,12 @@
 
 // Запустить трек
 - (IBAction)playTrack:(id)sender {
-    NSLog(@"%ld - %@",[sender tag], [trackList track:[sender tag]]);
     
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:[NSString stringWithFormat:@"%ld - %@", [sender tag], [trackList track:[sender tag]]]];
-    [alert runModal];
+    // Путь к файлу трека
+    NSString *path = [trackList track:[sender tag]];
+    
+    // Запустить проигрывание файла по пути
+    [player playPath:path];
 }
 
 @end
