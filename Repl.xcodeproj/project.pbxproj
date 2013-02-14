@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		681E3D7216CD0462001FAE2B /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 681E3D7116CD0462001FAE2B /* Player.m */; };
 		682EB1C215A1E1A60060AC31 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682EB1C115A1E1A60060AC31 /* Cocoa.framework */; };
 		682EB1CC15A1E1A60060AC31 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 682EB1CA15A1E1A60060AC31 /* InfoPlist.strings */; };
 		682EB1CE15A1E1A60060AC31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 682EB1CD15A1E1A60060AC31 /* main.m */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		681E3D7016CD0462001FAE2B /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		681E3D7116CD0462001FAE2B /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		682EB1BD15A1E1A60060AC31 /* Repl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		682EB1C115A1E1A60060AC31 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		682EB1C415A1E1A60060AC31 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -99,6 +102,8 @@
 				686CBCCD15AC56370059F046 /* Three.m */,
 				68DC2E5D15C861F0004E3F54 /* List.h */,
 				68DC2E5E15C861F0004E3F54 /* List.m */,
+				681E3D7016CD0462001FAE2B /* Player.h */,
+				681E3D7116CD0462001FAE2B /* Player.m */,
 				682EB1D615A1E1A60060AC31 /* MainMenu.xib */,
 				682EB1F415A2ED300060AC31 /* Icon */,
 				682EB1C815A1E1A60060AC31 /* Supporting Files */,
@@ -197,6 +202,7 @@
 				682EB1D515A1E1A60060AC31 /* AppDelegate.m in Sources */,
 				686CBCCE15AC56370059F046 /* Three.m in Sources */,
 				68DC2E5F15C861F0004E3F54 /* List.m in Sources */,
+				681E3D7216CD0462001FAE2B /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
