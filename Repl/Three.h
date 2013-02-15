@@ -8,8 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface Three : NSObject
+@interface Three : NSObject{
+    NSMenuItem *playItem;
+}
+
+- (id)init;
 
 - (void)getPath:(id)path forMenu:(id)menu toList:(id)list;
+
+- (void)markTrack:(id)item state:(NSUInteger)val;
+
+- (void)setPlayItem:(id)item;
+- (id)playItem;
 
 @end
