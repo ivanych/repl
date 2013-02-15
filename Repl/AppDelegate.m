@@ -31,6 +31,9 @@
     [statusItem setHighlightMode:YES];
     [statusItem setToolTip:@"Repl"];
     
+    // Дерево меню
+    three = [[Three alloc] init];
+    
     // Плеер
     player =[[Player alloc] init];
 }
@@ -64,7 +67,7 @@
         [trackMenu removeAllItems];
         
         // Дерево файлов
-        Three *three = [[Three alloc] init];
+        //Three *three = [[Three alloc] init];
         
         // Список треков
         trackList = [[List alloc] init];
@@ -84,12 +87,32 @@
 
 // Запустить трек
 - (IBAction)playTrack:(id)sender {
+    NSLog(@"playTrack --------------------------------");
+    NSLog(@"playTrack - item title: %@", [sender title]);
     
     // Путь к файлу трека
     NSString *path = [trackList track:[sender tag]];
     
     // Запустить проигрывание файла по пути
     [player playPath:path];
+    
+    // Получить старый проигрываемый пункт
+    NSMenuItem *oldPlayItem = [three playItem];
+    NSLog(@"playTrack - old item title: %@", [oldPlayItem title]);
+    
+    if ([oldPlayItem state] == NSOnState) {
+        NSLog(@"playTrack - old item state: %ld -> mark 0", [oldPlayItem state]);
+        
+        // Снять отметку в меню со старого проигрываемого трека
+        [three markTrack:oldPlayItem state:NSOffState];
+    }
+    
+    // Запомнить проигрываемый пункт
+    [three setPlayItem:sender];
+    NSLog(@"playTrack - new item title: %@", [[three playItem] title]);
+    
+    // Отметить в меню новый проигрываемый трек
+    [three markTrack:sender state:NSOnState];
 }
 
 @end

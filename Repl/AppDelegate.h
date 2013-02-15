@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "List.h"
 #import "Player.h"
+#import "Three.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     // Графический интерфейс приложения (меню)
@@ -20,6 +21,9 @@
     // Основная и дополнительная иконки приложения
     NSImage *statusImage1;
     NSImage *statusImage2;
+    
+    // Дерево меню
+    Three *three;
     
     // Список треков
     List *trackList;

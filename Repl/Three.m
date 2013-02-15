@@ -11,6 +11,14 @@
 
 @implementation Three
 
+- (id)init {
+    if (self = [super init]) {
+        playItem = [NSMenuItem alloc];
+    }
+    
+    return self;
+}
+
 - (void)getPath:(id)path forMenu:(id)menu toList:(id)list {
     // Пропускаем скрытые файлы
     NSRange isHidden = [path rangeOfString:@"/."];
@@ -30,7 +38,7 @@
     if ([fileManager fileExistsAtPath:path isDirectory:&isDir] && isDir) {
         NSLog(@"dir-> %@", path);
         
-        // Создаем пунт меню и субменю для него
+        // Создаем пункт меню и субменю для него
         NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:fileName action:nil keyEquivalent:@""];
         NSMenu *subMenu = [[NSMenu alloc] initWithTitle:fileName];
         [menuItem setSubmenu:subMenu];
@@ -66,6 +74,30 @@
         NSLog(@"menu title: %@", [menu title]);
         NSLog(@"item title: %@", [menuItem title]);
     }
+}
+
+- (void)markTrack:(id)item state:(NSUInteger)val {
+    NSLog(@"markTrack - item title: %@", [item title]);
+    
+    [item setState:val];
+    NSLog(@"markTrack - mark item: %ld", val);
+    
+    // Поднимаемся верх по дереву, пока не дойдем до меню треков (тег "1" для пункта меню треков задан в редакторе, в файле интерфейса)
+    if ([[item parentItem] tag] == 1) {
+        return;
+    }
+    
+    [self markTrack:[item parentItem] state:val];
+}
+
+// Установить текущий проигрываемый пункт меню
+- (void)setPlayItem:(id)item {
+    playItem = item;
+}
+
+// Получить текущий проигрываемый пункт меню
+- (id)playItem {
+    return playItem;
 }
 
 @end
