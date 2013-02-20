@@ -115,4 +115,8 @@
     [three markTrack:sender state:NSOnState];
 }
 
+- (IBAction)setShuffle:(id)sender {
+    NSLog(@"setShuffle --------------------------------");
+}
+
 @end
