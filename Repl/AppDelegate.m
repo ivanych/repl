@@ -115,4 +115,8 @@
     [three markTrack:sender state:NSOnState];
 }
 
+- (void)sound:(NSSound *)sound didFinishPlaying:(BOOL)playbackSuccessful {
+    NSLog(@"END!");
+}
+
 @end

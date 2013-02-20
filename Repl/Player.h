@@ -12,10 +12,10 @@
     
     // Объект для работы со звуком
     NSSound *sound;
-    
 }
 
 - (id)init;
 - (void)playPath:(id)path;
+- (void)sound:(NSSound*)sound didFinishPlaying:(BOOL)playbackSuccessful;
 
 @end

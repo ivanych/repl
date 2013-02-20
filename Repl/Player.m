@@ -14,7 +14,7 @@
     if (self = [super init]) {
         sound = [NSSound alloc];
     }
-    
+
     return self;
 }
 
@@ -29,6 +29,10 @@
     // Открыть файл и запустить
     sound = [sound initWithContentsOfFile:path byReference:false];
     [sound play];
+}
+
+- (void)sound:(NSSound*)sound didFinishPlaying:(BOOL)playbackSuccessful {
+    NSLog(@"END!");
 }
 
 @end
