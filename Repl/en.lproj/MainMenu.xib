@@ -81,7 +81,7 @@
 					</object>
 					<object class="NSMenuItem" id="541936159">
 						<reference key="NSMenu" ref="435703531"/>
-						<string key="NSTitle">Shuffle</string>
+						<string key="NSTitle">Random order</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="779621055"/>
@@ -144,11 +144,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">setShuffle:</string>
+						<string key="label">turnRandom:</string>
 						<reference key="source" ref="976324537"/>
 						<reference key="destination" ref="541936159"/>
 					</object>
-					<int key="connectionID">549</int>
+					<int key="connectionID">550</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -260,7 +260,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">549</int>
+			<int key="maxID">550</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

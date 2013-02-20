@@ -115,8 +115,19 @@
     [three markTrack:sender state:NSOnState];
 }
 
-- (IBAction)setShuffle:(id)sender {
-    NSLog(@"setShuffle --------------------------------");
+// Переключить флаг случайного режима воспроизведения
+- (IBAction)turnRandom:(id)sender {
+    NSLog(@"turnRandom --------------------------------");
+    NSLog(@"turnRandom - state %ld", [sender state]);
+    
+    if ([sender state] == NSOnState) {
+        [sender setState:NSOffState];
+        NSLog(@"turnRandom - setState %ld", [sender state]);
+    }
+    else {
+        [sender setState:NSOnState];
+        NSLog(@"turnRandom - setState %ld", [sender state]);
+    }
 }
 
 @end
