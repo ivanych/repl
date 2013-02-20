@@ -79,6 +79,25 @@
 						<reference key="NSOnImage" ref="779621055"/>
 						<reference key="NSMixedImage" ref="969624558"/>
 					</object>
+					<object class="NSMenuItem" id="541936159">
+						<reference key="NSMenu" ref="435703531"/>
+						<bool key="NSIsDisabled">YES</bool>
+						<string key="NSTitle">Shuffle</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="779621055"/>
+						<reference key="NSMixedImage" ref="969624558"/>
+					</object>
+					<object class="NSMenuItem" id="67005393">
+						<reference key="NSMenu" ref="435703531"/>
+						<bool key="NSIsDisabled">YES</bool>
+						<bool key="NSIsSeparator">YES</bool>
+						<string key="NSTitle"/>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="779621055"/>
+						<reference key="NSMixedImage" ref="969624558"/>
+					</object>
 					<object class="NSMenuItem" id="437032543">
 						<reference key="NSMenu" ref="435703531"/>
 						<string key="NSTitle">Quit</string>
@@ -169,6 +188,8 @@
 							<reference ref="437032543"/>
 							<reference ref="254595196"/>
 							<reference ref="344159659"/>
+							<reference ref="67005393"/>
+							<reference ref="541936159"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -201,6 +222,16 @@
 						<reference key="object" ref="344159659"/>
 						<reference key="parent" ref="435703531"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">547</int>
+						<reference key="object" ref="67005393"/>
+						<reference key="parent" ref="435703531"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">548</int>
+						<reference key="object" ref="541936159"/>
+						<reference key="parent" ref="435703531"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -215,14 +246,38 @@
 				<string key="543.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="544.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="546.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="547.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="548.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">546</int>
+			<int key="maxID">548</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">AppDelegate</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">statusMenu</string>
+						<string key="NS.object.0">NSMenu</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">statusMenu</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">statusMenu</string>
+							<string key="candidateClassName">NSMenu</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/AppDelegate.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
