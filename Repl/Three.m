@@ -14,6 +14,7 @@
 - (id)init {
     if (self = [super init]) {
         playItem = [NSMenuItem alloc];
+        rndFlag = 0;
     }
     
     return self;
@@ -98,6 +99,23 @@
 // Получить текущий проигрываемый пункт меню
 - (id)playItem {
     return playItem;
+}
+
+// Переключить флаг случайного режима воспроизведения
+- (void)turnRndFlag:(id)sender {
+    if (rndFlag) {
+        rndFlag = 0;
+        [sender setState:NSOffState];
+    }
+    else {
+        rndFlag = 1;
+        [sender setState:NSOnState];
+    }
+}
+
+// Прочитать флаг случайного режима воспроизведения
+- (NSUInteger)rndFlag {
+    return rndFlag;
 }
 
 @end
