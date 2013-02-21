@@ -118,16 +118,12 @@
 // Переключить флаг случайного режима воспроизведения
 - (IBAction)turnRandom:(id)sender {
     NSLog(@"turnRandom --------------------------------");
-    NSLog(@"turnRandom - state %ld", [sender state]);
     
-    if ([sender state] == NSOnState) {
-        [sender setState:NSOffState];
-        NSLog(@"turnRandom - setState %ld", [sender state]);
-    }
-    else {
-        [sender setState:NSOnState];
-        NSLog(@"turnRandom - setState %ld", [sender state]);
-    }
+    NSLog(@"turnRandom - rndFlag old: %ld", [three rndFlag]);
+    
+    [three turnRndFlag:sender];
+    
+    NSLog(@"turnRandom - rndFlag new: %ld", [three rndFlag]);
 }
 
 @end
