@@ -15,6 +15,8 @@
 
 // Инициализация приложения
 - (void)awakeFromNib {
+    NSLog(@"awakeFromNib --------------------------------");
+    
     // Объект статусной панели
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     
@@ -22,8 +24,13 @@
     NSBundle *bundle = [NSBundle mainBundle];
     
     // Загрузка изображений для иконки
-    statusImage1 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon1" ofType:@"png"]];
-    statusImage2 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon2" ofType:@"png"]];
+    statusImage1 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon1"
+                                                                            ofType:@"png"
+                                                                       inDirectory:@"icons"]];
+    
+    statusImage2 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon2"
+                                                                            ofType:@"png"
+                                                                       inDirectory:@"icons"]];
     
     // Параметры объекта статусной панели
     [statusItem setMenu:statusMenu];
