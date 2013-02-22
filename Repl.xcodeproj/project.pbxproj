@@ -17,6 +17,7 @@
 		683247EF16D80C1600BF4C35 /* Changes in Resources */ = {isa = PBXBuildFile; fileRef = 683247ED16D80C1600BF4C35 /* Changes */; };
 		683247F016D80C1600BF4C35 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 683247EE16D80C1600BF4C35 /* README */; };
 		6832480916D8201C00BF4C35 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 6832480816D8201C00BF4C35 /* icons */; };
+		6832480B16D829EC00BF4C35 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 6832480A16D829EC00BF4C35 /* LICENSE */; };
 		686CBCCE15AC56370059F046 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 686CBCCD15AC56370059F046 /* Three.m */; };
 		68DC2E5F15C861F0004E3F54 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DC2E5E15C861F0004E3F54 /* List.m */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		683247ED16D80C1600BF4C35 /* Changes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changes; sourceTree = SOURCE_ROOT; };
 		683247EE16D80C1600BF4C35 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = SOURCE_ROOT; };
 		6832480816D8201C00BF4C35 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icons; sourceTree = "<group>"; };
+		6832480A16D829EC00BF4C35 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		686CBCCC15AC56370059F046 /* Three.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Three.h; sourceTree = "<group>"; };
 		686CBCCD15AC56370059F046 /* Three.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Three.m; sourceTree = "<group>"; };
 		68C7FCE515A5A3B100B94DF5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				682EB1C715A1E1A60060AC31 /* Repl */,
 				683247ED16D80C1600BF4C35 /* Changes */,
+				6832480A16D829EC00BF4C35 /* LICENSE */,
 				683247EE16D80C1600BF4C35 /* README */,
 				682EB1C015A1E1A60060AC31 /* Frameworks */,
 				682EB1BE15A1E1A60060AC31 /* Products */,
@@ -184,6 +187,7 @@
 				683247EF16D80C1600BF4C35 /* Changes in Resources */,
 				683247F016D80C1600BF4C35 /* README in Resources */,
 				6832480916D8201C00BF4C35 /* icons in Resources */,
+				6832480B16D829EC00BF4C35 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
