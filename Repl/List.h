@@ -11,6 +11,7 @@
 @interface List : NSObject {
     NSMutableArray *list;
     NSUInteger *rndFlag;
+    NSUInteger playTrack;
 }
 
 - (id)init;
@@ -20,5 +21,10 @@
 
 - (void)turnRndFlag:(id)sender;
 - (NSUInteger)rndFlag;
+
+- (void)setPlayTrack:(NSUInteger)index;
+- (NSUInteger)playTrack;
+
+- (NSUInteger)nextTrack;
 
 @end

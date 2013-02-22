@@ -111,9 +111,15 @@
     // Запомнить проигрываемый пункт
     [three setPlayItem:sender];
     NSLog(@"playTrack - new item title: %@", [[three playItem] title]);
-    
-    // Отметить в меню новый проигрываемый трек
+    // Отметить в меню проигрываемый пункт
     [three markTrack:sender state:NSOnState];
+    
+    // Запомнить проигрываемый трек
+    [trackList setPlayTrack:[sender tag]];
+    NSLog(@"playTrack - new track index: %ld", [trackList playTrack]);
+    
+    // временно - запрос следующего трека
+    NSLog(@"playTrack - next track index: %ld", [trackList nextTrack]);
 }
 
 // Переключить флаг случайного режима воспроизведения
