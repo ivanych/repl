@@ -10,7 +10,6 @@
 
 @interface Three : NSObject{
     NSMenuItem *playItem;
-    NSUInteger *rndFlag;
 }
 
 - (id)init;
@@ -21,8 +20,5 @@
 
 - (void)setPlayItem:(id)item;
 - (id)playItem;
-
-- (void)turnRndFlag:(id)sender;
-- (NSUInteger)rndFlag;
 
 @end

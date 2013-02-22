@@ -10,11 +10,15 @@
 
 @interface List : NSObject {
     NSMutableArray *list;
+    NSUInteger *rndFlag;
 }
 
 - (id)init;
 
 - (NSUInteger)addTrack:(id)path;
 - (id)track:(NSUInteger)index;
+
+- (void)turnRndFlag:(id)sender;
+- (NSUInteger)rndFlag;
 
 @end

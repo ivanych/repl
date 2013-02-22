@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Three.h"
+#import "List.h"
 
 
 @implementation AppDelegate
@@ -119,11 +120,11 @@
 - (IBAction)turnRandom:(id)sender {
     NSLog(@"turnRandom --------------------------------");
     
-    NSLog(@"turnRandom - rndFlag old: %ld", [three rndFlag]);
+    NSLog(@"turnRandom - rndFlag old: %ld", [trackList rndFlag]);
     
-    [three turnRndFlag:sender];
+    [trackList turnRndFlag:sender];
     
-    NSLog(@"turnRandom - rndFlag new: %ld", [three rndFlag]);
+    NSLog(@"turnRandom - rndFlag new: %ld", [trackList rndFlag]);
 }
 
 @end
