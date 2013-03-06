@@ -8,12 +8,15 @@
 
 #import "AppDelegate.h"
 #import "Three.h"
+#import "List.h"
 
 
 @implementation AppDelegate
 
 // Инициализация приложения
 - (void)awakeFromNib {
+    NSLog(@"awakeFromNib --------------------------------");
+    
     // Объект статусной панели
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     
@@ -21,8 +24,13 @@
     NSBundle *bundle = [NSBundle mainBundle];
     
     // Загрузка изображений для иконки
-    statusImage1 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon1" ofType:@"png"]];
-    statusImage2 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon2" ofType:@"png"]];
+    statusImage1 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon1"
+                                                                            ofType:@"png"
+                                                                       inDirectory:@"icons"]];
+    
+    statusImage2 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon2"
+                                                                            ofType:@"png"
+                                                                       inDirectory:@"icons"]];
     
     // Параметры объекта статусной панели
     [statusItem setMenu:statusMenu];
@@ -110,9 +118,26 @@
     // Запомнить проигрываемый пункт
     [three setPlayItem:sender];
     NSLog(@"playTrack - new item title: %@", [[three playItem] title]);
-    
-    // Отметить в меню новый проигрываемый трек
+    // Отметить в меню проигрываемый пункт
     [three markTrack:sender state:NSOnState];
+    
+    // Запомнить проигрываемый трек
+    [trackList setPlayTrack:[sender tag]];
+    NSLog(@"playTrack - new track index: %ld", [trackList playTrack]);
+    
+    // временно - запрос следующего трека
+    NSLog(@"playTrack - next track index: %ld", [trackList nextTrack]);
+}
+
+// Переключить флаг случайного режима воспроизведения
+- (IBAction)turnRandom:(id)sender {
+    NSLog(@"turnRandom --------------------------------");
+    
+    NSLog(@"turnRandom - rndFlag old: %ld", [trackList rndFlag]);
+    
+    [trackList turnRndFlag:sender];
+    
+    NSLog(@"turnRandom - rndFlag new: %ld", [trackList rndFlag]);
 }
 
 - (void)sound:(NSSound *)sound didFinishPlaying:(BOOL)playbackSuccessful {
