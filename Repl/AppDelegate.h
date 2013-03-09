@@ -31,5 +31,5 @@
     // Плеер
     Player *player;
 }
-
+    
 @end

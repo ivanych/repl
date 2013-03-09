@@ -2,23 +2,29 @@
 //  Three.h
 //  Repl
 //
-//  Created by ivan ivanych on 10.07.12.
+//  Created by Mikhail Ivanov on 10.07.12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
+#import "List.h"
 
 @interface Three : NSObject{
-    NSMenuItem *playItem;
+    NSUInteger playItem;
+    NSMenu *statusMenu;
+    
+    // Плейлист
+    List *list;
 }
 
 - (id)init;
 
 - (void)getPath:(id)path forMenu:(id)menu toList:(id)list;
 
-- (void)markTrack:(id)item state:(NSUInteger)val;
+- (void)markItem:(id)item state:(NSUInteger)state;
+- (void)markMenu:(NSUInteger)number;
 
-- (void)setPlayItem:(id)item;
-- (id)playItem;
+- (void)setMenu:(id)m;
+- (void)setList:(id)l;
 
 @end

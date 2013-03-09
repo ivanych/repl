@@ -69,6 +69,9 @@
 							<string key="NSTitle">Треки</string>
 							<array class="NSMutableArray" key="NSMenuItems"/>
 						</object>
+						<object class="NSAttributedString" key="NSAttributedTitle">
+							<string key="NSString"/>
+						</object>
 					</object>
 					<object class="NSMenuItem" id="337052140">
 						<reference key="NSMenu" ref="435703531"/>
@@ -194,9 +197,9 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="628186410"/>
 							<reference ref="437032543"/>
+							<reference ref="8903290"/>
 							<reference ref="523099766"/>
 							<reference ref="337052140"/>
-							<reference ref="8903290"/>
 							<reference ref="891405356"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -263,29 +266,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">550</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">AppDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">statusMenu</string>
-						<string key="NS.object.0">NSMenu</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">statusMenu</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">statusMenu</string>
-							<string key="candidateClassName">NSMenu</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/AppDelegate.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">

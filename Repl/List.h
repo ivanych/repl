@@ -9,22 +9,31 @@
 #import <Cocoa/Cocoa.h>
 
 @interface List : NSObject {
-    NSMutableArray *list;
-    NSUInteger *rndFlag;
+    
+    // Плейлист
+    NSMutableArray *hlist;
+    
+    // Флаг случайного режима
+    NSUInteger rndFlag;
+    
+    // Проигрываемый трек
     NSUInteger playTrack;
 }
 
 - (id)init;
 
 - (NSUInteger)addTrack:(id)path;
-- (id)track:(NSUInteger)index;
+- (void)linkTrack:(NSUInteger)number withItem:(id)item;
 
-- (void)turnRndFlag:(id)sender;
-- (NSUInteger)rndFlag;
+- (id)path:(NSUInteger)number;
+- (id)item:(NSUInteger)number;
 
-- (void)setPlayTrack:(NSUInteger)index;
+- (void)setPlayTrack:(NSUInteger)number;
 - (NSUInteger)playTrack;
 
 - (NSUInteger)nextTrack;
+ 
+- (void)turnRndFlag:(id)sender;
+- (NSUInteger)rndFlag;
 
 @end
