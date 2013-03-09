@@ -7,15 +7,30 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "List.h"
+#import "Three.h"
 
-@interface Player : NSObject {
+@interface Player : NSObject <NSSoundDelegate> {
     
-    // Объект для работы со звуком
+    // Проигрыватель
     NSSound *sound;
     
+    // Плейлист
+    List *list;
+    
+    // Меню
+    Three *menu;
 }
 
 - (id)init;
-- (void)playPath:(id)path;
+
+- (void)playFile:(id)path;
+- (void)playTrack:(NSUInteger)number;
+- (void)playNextTrack;
+
+- (void)setList:(id)l;
+- (void)setMenu:(id)m;
+
+- (void)sound:(NSSound *)sound didFinishPlaying:(BOOL)playbackSuccessful;
 
 @end

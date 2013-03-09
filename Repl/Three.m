@@ -13,13 +13,13 @@
 
 - (id)init {
     if (self = [super init]) {
-        playItem = [NSMenuItem alloc];
+        playItem = NULL;
     }
     
     return self;
 }
 
-- (void)getPath:(id)path forMenu:(id)menu toList:(id)list {
+- (void)getPath:(id)path forMenu:(id)menu toList:(id)blist {
     // Пропускаем скрытые файлы
     NSRange isHidden = [path rangeOfString:@"/."];
     if (isHidden.length) {
@@ -56,7 +56,7 @@
             // Полный путь к файлу каталога
             NSString *fullpath = [NSString stringWithFormat:@"%@/%@", path, d];
             
-            [self getPath:fullpath forMenu:subMenu toList:list];
+            [self getPath:fullpath forMenu:subMenu toList:blist];
         }
     }
     // Если файл является файлом
@@ -64,40 +64,72 @@
         NSLog(@"file: %@", path);
         
         // Добавляем трек в список
-        NSUInteger nTrack = [list addTrack:path];
+        NSUInteger nTrack = [blist addTrack:path];
         
         // Создаем пунт меню
         NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:fileName action:@selector(playTrack:) keyEquivalent:@""];
-        [menuItem setTag:nTrack];
+        [menuItem setTag:nTrack+100];
         [menu addItem:menuItem];
+        
+        // Линкуем трек с пунктом меню
+        [blist linkTrack:nTrack withItem:menuItem];
         
         NSLog(@"menu title: %@", [menu title]);
         NSLog(@"item title: %@", [menuItem title]);
     }
 }
 
-- (void)markTrack:(id)item state:(NSUInteger)val {
-    NSLog(@"markTrack - item title: %@", [item title]);
+- (void)markItem:(id)item state:(NSUInteger)state {
+    NSLog(@"Three.markItem -> item: %@, state: %ld", item, state);
     
-    [item setState:val];
-    NSLog(@"markTrack - mark item: %ld", val);
+    [item setState:state];
+    NSLog(@"Three.markItem - set state: %ld", state);
     
     // Поднимаемся верх по дереву, пока не дойдем до меню треков (тег "1" для пункта меню треков задан в редакторе, в файле интерфейса)
     if ([[item parentItem] tag] == 1) {
+        NSLog(@"Three.markItem - parent item tag == 1, end markItem!");
+        
         return;
     }
     
-    [self markTrack:[item parentItem] state:val];
+    [self markItem:[item parentItem] state:state];
 }
 
-// Установить текущий проигрываемый пункт меню
-- (void)setPlayItem:(id)item {
-    playItem = item;
+// Отметить проигрываемый трек в меню
+- (void)markMenu:(NSUInteger)number {
+    NSLog(@"Three.markMenu -> number: %ld", number);
+    
+    // Номер текущего проигрываемого трека
+    NSUInteger currentNumber = [list playTrack];
+    
+    // Если что-то уже играет - снять текущую отметку в меню
+    if (currentNumber) {
+        NSLog(@"Three.markMenu - current unmark required");
+        
+        NSMenuItem *oldPlayItem = [list item:currentNumber];
+        
+        // Снять отметку в меню со старого проигрываемого трека
+        [self markItem:oldPlayItem state:NSOffState];
+    }
+    else {
+        NSLog(@"Three.markMenu - current unmark not required");
+    }
+
+    // Определяем пункт меню
+    NSMenuItem *item = [list item:number];
+    
+    // Отметить в меню проигрываемый пункт
+    [self markItem:item state:NSOnState];
 }
 
-// Получить текущий проигрываемый пункт меню
-- (id)playItem {
-    return playItem;
+// Связать дерево с меню
+- (void)setMenu:(id)m {
+    statusMenu = m;
+}
+
+// Связать плеер с плейлистом
+- (void)setList:(id)l {
+    list = l;
 }
 
 @end

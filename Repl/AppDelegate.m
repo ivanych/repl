@@ -42,8 +42,23 @@
     // Дерево меню
     three = [[Three alloc] init];
     
+    // Связать дерево с меню
+    [three setMenu:statusMenu];
+    
+    // Список треков
+    trackList = [[List alloc] init];
+    
+    // Связать дерево со списком треков
+    [three setList:trackList];
+    
     // Плеер
     player =[[Player alloc] init];
+    
+    // Связать плеер со списком треков
+    [player setList:trackList];
+    
+    // Связать плеер с деревом меню
+    [player setMenu:three];
 }
 
 // Открыть файлы
@@ -78,7 +93,7 @@
         //Three *three = [[Three alloc] init];
         
         // Список треков
-        trackList = [[List alloc] init];
+        //trackList = [[List alloc] init];
         
         // Читаем все выбранные файлы
         for(NSURL *url in urls) {
@@ -95,49 +110,24 @@
 
 // Запустить трек
 - (IBAction)playTrack:(id)sender {
-    NSLog(@"playTrack --------------------------------");
-    NSLog(@"playTrack - item title: %@", [sender title]);
+    NSLog(@"App.playTrack --------------------------------");
+    NSLog(@"App.playTrack -> sender: %@, ", sender);
     
-    // Путь к файлу трека
-    NSString *path = [trackList track:[sender tag]];
+    NSLog(@"App.playTrack - item tag: %ld, item title: %@", [sender tag], [sender title]);
+
+    // Определить номер по тегу
+    NSUInteger number = [sender tag] - 100;
+    NSLog(@"App.playTrack - number: %ld", number);
     
-    // Запустить проигрывание файла по пути
-    [player playPath:path];
-    
-    // Получить старый проигрываемый пункт
-    NSMenuItem *oldPlayItem = [three playItem];
-    NSLog(@"playTrack - old item title: %@", [oldPlayItem title]);
-    
-    if ([oldPlayItem state] == NSOnState) {
-        NSLog(@"playTrack - old item state: %ld -> mark 0", [oldPlayItem state]);
-        
-        // Снять отметку в меню со старого проигрываемого трека
-        [three markTrack:oldPlayItem state:NSOffState];
-    }
-    
-    // Запомнить проигрываемый пункт
-    [three setPlayItem:sender];
-    NSLog(@"playTrack - new item title: %@", [[three playItem] title]);
-    // Отметить в меню проигрываемый пункт
-    [three markTrack:sender state:NSOnState];
-    
-    // Запомнить проигрываемый трек
-    [trackList setPlayTrack:[sender tag]];
-    NSLog(@"playTrack - new track index: %ld", [trackList playTrack]);
-    
-    // временно - запрос следующего трека
-    NSLog(@"playTrack - next track index: %ld", [trackList nextTrack]);
+    // Запустить проигрывание трека
+    [player playTrack:number];
 }
 
 // Переключить флаг случайного режима воспроизведения
 - (IBAction)turnRandom:(id)sender {
     NSLog(@"turnRandom --------------------------------");
     
-    NSLog(@"turnRandom - rndFlag old: %ld", [trackList rndFlag]);
-    
     [trackList turnRndFlag:sender];
-    
-    NSLog(@"turnRandom - rndFlag new: %ld", [trackList rndFlag]);
 }
 
 @end
