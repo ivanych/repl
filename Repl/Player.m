@@ -24,7 +24,26 @@
     NSLog(@"Player.stop -> ()");
     
     [sound stop];
+    isPlay = NO;
     NSLog(@"Player.stop - sound stop");
+}
+
+// Продолжить проигрывание
+- (void)resume {
+    NSLog(@"Player.resume -> ()");
+    
+    [sound resume];
+    isPlay = YES;
+    NSLog(@"Player.resume - sound set resume");
+}
+
+// Приостановить проигрывание
+- (void)pause {
+    NSLog(@"Player.pause -> ()");
+    
+    [sound pause];
+    isPlay = NO;
+    NSLog(@"Player.pause - sound set pause");
 }
 
 // Запустить проигрывание файла
@@ -41,6 +60,7 @@
     // Открыть файл и запустить
     sound = [sound initWithContentsOfFile:path byReference:false];
     [sound play];
+    isPlay = YES;
     NSLog(@"Player.playFile - sound play");
 }
 
@@ -61,6 +81,34 @@
     [list setPlayTrack:number];
 }
 
+// Приостановить или продолжить проигрывание трека
+- (void)pauseTrack {
+    NSLog(@"Player.pauseTrack -> ()");
+    
+    // Если что-то уже играет - приостановить или продолжить
+    if ([sound isPlaying]) {
+        NSLog(@"Player.pauseTrack - sound isPlaying");
+        
+        // Если трек проигрывается - приостановить
+        if (isPlay) {
+            NSLog(@"Player.pauseTrack - sound isPlay");
+            
+            [self pause];
+        }
+        else {
+            NSLog(@"Player.pauseTrack - sound notPlay");
+            
+            [self resume];
+        }
+    }
+    // Если ничего не играет - запустить проигрывание
+    else {
+        NSLog(@"Player.pauseTrack - sound notPlaying");
+        
+        [self playNextTrack];
+    }
+}
+
 // Запустить проигрывание следующего трека
 - (void)playNextTrack {
     NSLog(@"Player.playNextTrack - - - - - - - - - - - - - - -");
@@ -69,6 +117,19 @@
     // Следующий трек
     NSUInteger number = [list nextTrack];
     NSLog(@"Player.playNextTrack -> number: %ld", number);
+    
+    // Запустить проигрывание трека
+    [self playTrack:number];
+}
+
+// Запустить проигрывание предыдущего трека
+- (void)playPrevTrack {
+    NSLog(@"Player.playPrevTrack - - - - - - - - - - - - - - -");
+    NSLog(@"Player.playPrevTrack -> ()");
+    
+    // Предыдущий трек
+    NSUInteger number = [list prevTrack];
+    NSLog(@"Player.playPrevTrack -> number: %ld", number);
     
     // Запустить проигрывание трека
     [self playTrack:number];

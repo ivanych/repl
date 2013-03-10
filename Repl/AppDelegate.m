@@ -109,6 +109,18 @@
             // Обход дерева файлов
             [three getPath:path forMenu:trackMenu toList:trackList];
         }
+        
+        // Назначаем обработчик пункту меню "пуск/пауза" (тег "2" для пункта меню задан в редакторе, в файле интерфейса)
+        NSMenuItem *pauseMenuItem = [statusMenu itemWithTag:2];
+        [pauseMenuItem setAction:@selector(pauseTrack:)];
+        
+        // Назначаем обработчик пункту меню "Следующий" (тег "3" для пункта меню задан в редакторе, в файле интерфейса)
+        NSMenuItem *nextMenuItem = [statusMenu itemWithTag:3];
+        [nextMenuItem setAction:@selector(nextTrack:)];
+        
+        // Назначаем обработчик пункту меню "Предыдущий" (тег "4" для пункта меню задан в редакторе, в файле интерфейса)
+        NSMenuItem *prevMenuItem = [statusMenu itemWithTag:4];
+        [prevMenuItem setAction:@selector(prevTrack:)];
     }
 }
 
@@ -125,6 +137,33 @@
     
     // Запустить проигрывание трека
     [player playTrack:number];
+}
+
+// Приостановить/продолжить трек
+- (IBAction)pauseTrack:(id)sender {
+    NSLog(@"App.pauseTrack --------------------------------");
+    NSLog(@"App.pauseTrack -> sender: %@, ", sender);
+    
+    // Приостановить или продолжить трек
+    [player pauseTrack];
+}
+
+// Следующий трек
+- (IBAction)nextTrack:(id)sender {
+    NSLog(@"App.nextTrack --------------------------------");
+    NSLog(@"App.nextTrack -> sender: %@, ", sender);
+    
+    // Следующий трек
+    [player playNextTrack];
+}
+
+// Предыдущий трек
+- (IBAction)prevTrack:(id)sender {
+    NSLog(@"App.prevTrack --------------------------------");
+    NSLog(@"App.prevTrack -> sender: %@, ", sender);
+    
+    // Предыдущий трек
+    [player playPrevTrack];
 }
 
 // Переключить флаг случайного режима воспроизведения

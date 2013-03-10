@@ -110,6 +110,37 @@
     return nextTrack;
 }
 
+// Номер предыдущего трека
+- (NSUInteger)prevTrack {
+    NSLog(@"List.prevTrack -> ()");
+    
+    NSUInteger allTrack = [hlist count];
+    
+    NSUInteger prevTrack;
+    
+    if (rndFlag) {
+        NSLog(@"List.prevTrack - rndFlag: 1, prev track = random");
+        
+        prevTrack = (random() % allTrack) + 1;
+    }
+    else {
+        NSLog(@"List.prevTrack - rndFlag: 0, prev track = prev");
+        
+        if (playTrack <= 1) {
+            prevTrack = allTrack;
+        }
+        else {
+            prevTrack = playTrack-1;
+        }
+    }
+    
+    NSLog(@"List.prevTrack - playTrack: %ld, all track: %ld, prev track: %ld", playTrack, allTrack, prevTrack);
+    
+    NSLog(@"List.prevTrack <- number: %ld", prevTrack);
+    
+    return prevTrack;
+}
+
 // Переключить флаг случайного режима воспроизведения
 - (void)turnRndFlag:(id)sender {
     NSLog(@"List.turnRndFlag -> sender: %@", sender);
