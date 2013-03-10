@@ -24,6 +24,7 @@
 
 - (id)init;
 
+- (void)stop;
 - (void)playFile:(id)path;
 - (void)playTrack:(NSUInteger)number;
 - (void)playNextTrack;

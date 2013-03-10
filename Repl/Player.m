@@ -19,14 +19,23 @@
     return self;
 }
 
+// Остановить проигрывание
+- (void)stop {
+    NSLog(@"Player.stop -> ()");
+    
+    [sound stop];
+    NSLog(@"Player.stop - sound stop");
+}
+
 // Запустить проигрывание файла
 - (void)playFile:(id)path {
     NSLog(@"Player.playFile -> path: %@", path);
     
     // Если что-то уже играет - остановить
     if ([sound isPlaying]) {
-        [sound stop];
-        NSLog(@"Player.playFile - current sound stop");
+        NSLog(@"Player.playFile - sound isPlaying");
+        
+        [self stop];
     }
     
     // Открыть файл и запустить

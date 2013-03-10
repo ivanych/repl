@@ -15,8 +15,7 @@
 
 // Инициализация приложения
 - (void)awakeFromNib {
-    NSLog(@"awakeFromNib --------------------------------");
-    
+
     // Объект статусной панели
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     
@@ -63,6 +62,8 @@
 
 // Открыть файлы
 - (IBAction)openFile:(id)sender {
+    NSLog(@"App.openFile --------------------------------");
+    NSLog(@"App.openFile -> sender: %@, ", sender);
     
     // Создать диалог открытия файлов
     NSOpenPanel *fileDialog = [NSOpenPanel openPanel];
@@ -89,11 +90,14 @@
         // Очищаем меню треков от предыдущего содержимого
         [trackMenu removeAllItems];
         
-        // Дерево файлов
-        //Three *three = [[Three alloc] init];
+        // Останавливаем проигрывание
+        [player stop];
         
-        // Список треков
-        //trackList = [[List alloc] init];
+        // Обнуляем проигрываемый трек
+        [trackList setPlayTrack:0];
+        
+        // Очищаем список треков от предыдущего содержимого
+        [trackList reset];
         
         // Читаем все выбранные файлы
         for(NSURL *url in urls) {
@@ -125,7 +129,8 @@
 
 // Переключить флаг случайного режима воспроизведения
 - (IBAction)turnRandom:(id)sender {
-    NSLog(@"turnRandom --------------------------------");
+    NSLog(@"App.turnRandom --------------------------------");
+    NSLog(@"App.turnRandom -> sender: %@, ", sender);
     
     [trackList turnRndFlag:sender];
 }
