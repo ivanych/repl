@@ -22,6 +22,8 @@
 
 - (id)init;
 
+- (void)reset;
+
 - (NSUInteger)addTrack:(id)path;
 - (void)linkTrack:(NSUInteger)number withItem:(id)item;
 

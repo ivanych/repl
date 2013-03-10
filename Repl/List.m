@@ -18,6 +18,15 @@
     return self;
 }
 
+// Стереть все содержимое списка
+- (void)reset {
+    NSLog(@"List.reset -> ()");
+    
+    // Удалить все треки из списка
+    [hlist removeAllObjects];
+    NSLog(@"List.reset - remove all track");
+}
+
 // Добавить трек в список
 - (NSUInteger)addTrack:(id)path {
     
