@@ -34,6 +34,7 @@
 - (NSUInteger)playTrack;
 
 - (NSUInteger)nextTrack;
+- (NSUInteger)prevTrack;
  
 - (void)turnRndFlag:(id)sender;
 - (NSUInteger)rndFlag;
