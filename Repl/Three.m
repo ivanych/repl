@@ -14,16 +14,28 @@
 - (id)init {
     if (self = [super init]) {
         playItem = NULL;
+        
+        // Поддерживаемые типы файлов
+        supportType = @[@"aiff", @"aif", @"aifc",
+                        @"wave", @"wav",
+                        @"au", @"ulw", @"snd",
+                        @"mp3",
+                        @"m4p", @"m4b",
+                        @"m4a"
+                       ];
     }
     
     return self;
 }
 
 - (void)getPath:(id)path forMenu:(id)menu toList:(id)blist {
+    NSLog(@"Three.getPath -> path: %@", path);
+    
     // Пропускаем скрытые файлы
     NSRange isHidden = [path rangeOfString:@"/."];
     if (isHidden.length) {
-        NSLog(@"file: %@ (скрытый файл, пропускаем)", path);
+        NSLog(@"Three.getPath - hidden file, skip!");
+
         return;
     }
     
@@ -36,7 +48,7 @@
     
     // Если файл является каталогом
     if ([fileManager fileExistsAtPath:path isDirectory:&isDir] && isDir) {
-        NSLog(@"dir-> %@", path);
+        NSLog(@"Three.getPath - is directory");
         
         // Создаем пункт меню и субменю для него
         NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:fileName action:nil keyEquivalent:@""];
@@ -44,14 +56,16 @@
         [menuItem setSubmenu:subMenu];
         [menu addItem:menuItem];
         
-        NSLog(@"menu title: %@", [menu title]);
-        NSLog(@"item title: %@", [menuItem title]);
-        NSLog(@"subm title: %@", [subMenu title]);
+        NSLog(@"Three.getPath - create menu");
+        NSLog(@"Three.getPath - menu title: %@", [menu title]);
+        NSLog(@"Three.getPath - item title: %@", [menuItem title]);
+        NSLog(@"Three.getPath - subm title: %@", [subMenu title]);
         
         //Читаем содержимое каталога
         NSArray * dir = [fileManager contentsOfDirectoryAtPath:path error:nil];
         
         // Перебор содержимого каталога
+        NSLog(@"Three.getPath - read directory");
         for (NSArray *d in dir) {
             // Полный путь к файлу каталога
             NSString *fullpath = [NSString stringWithFormat:@"%@/%@", path, d];
@@ -61,7 +75,15 @@
     }
     // Если файл является файлом
     else {
-        NSLog(@"file: %@", path);
+        // Фильтруем файлы
+        NSString *type = [path pathExtension];
+        NSLog(@"Three.getPath - file type: %@", type);
+        
+        if (![supportType containsObject:type]) {
+            NSLog(@"Three.getPath - file type not support, skip!");
+            
+            return;
+        }
         
         // Добавляем трек в список
         NSUInteger nTrack = [blist addTrack:path];
