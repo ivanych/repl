@@ -10,7 +10,6 @@
 #import "List.h"
 
 @interface Three : NSObject{
-    NSUInteger playItem;
     NSMenu *statusMenu;
     
     // Поддерживаемые типы файлов
