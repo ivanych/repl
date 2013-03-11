@@ -15,7 +15,8 @@
 
 // Инициализация приложения
 - (void)awakeFromNib {
-
+NSLog(@"App.openFile -> sender: %@", [NSSound soundUnfilteredTypes]);
+    
     // Объект статусной панели
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     
@@ -72,6 +73,7 @@
     [fileDialog setCanChooseFiles:YES];
     [fileDialog setCanChooseDirectories:YES];
     [fileDialog setAllowsMultipleSelection:YES];
+    [fileDialog setAllowedFileTypes:[NSSound soundUnfilteredTypes]];
     
     // Вывести диалог
     // Если запуск вернул нажатие кнопки OK - обработать выбранные файлы

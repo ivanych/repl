@@ -13,6 +13,9 @@
     NSUInteger playItem;
     NSMenu *statusMenu;
     
+    // Поддерживаемые типы файлов
+    NSArray *supportType;
+    
     // Плейлист
     List *list;
 }
