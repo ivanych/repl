@@ -26,6 +26,8 @@
 - (void)markItem:(id)item state:(NSUInteger)state;
 - (void)markMenu:(NSUInteger)number;
 
+- (void)markRndMenuItem:(NSInteger)state;
+
 - (void)setMenu:(id)m;
 - (void)setList:(id)l;
 

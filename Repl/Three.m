@@ -141,6 +141,15 @@
     // Отметить в меню проигрываемый пункт
     [self markItem:item state:NSOnState];
 }
+ 
+// Отметить случайный режим воспроизведения в меню
+- (void)markRndMenuItem:(NSInteger)state {
+    NSLog(@"Three.markRndMenuItem -> state: %ld", state);
+    
+    // Назначаем обработчик пункту меню "Предыдущий" (тег "5" для пункта меню задан в редакторе, в файле интерфейса)
+    NSMenuItem *rndMenuItem = [statusMenu itemWithTag:5];
+    [rndMenuItem setState:state];
+}
 
 // Связать дерево с меню
 - (void)setMenu:(id)m {
