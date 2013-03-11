@@ -2,8 +2,8 @@
 //  Player.m
 //  Repl
 //
-//  Created by ivanych on 09.08.12.
-//
+//  Created by Mikhail Ivanov on 09.08.12.
+//  Copyright (c) 2012 Ivanych. All rights reserved.
 //
 
 #import "Player.h"
