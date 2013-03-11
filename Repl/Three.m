@@ -13,8 +13,6 @@
 
 - (id)init {
     if (self = [super init]) {
-        playItem = NULL;
-        
         // Поддерживаемые типы файлов
         supportType = @[@"aiff", @"aif", @"aifc",
                         @"wave", @"wav",

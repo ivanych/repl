@@ -15,8 +15,6 @@
 
 // Инициализация приложения
 - (void)awakeFromNib {
-NSLog(@"App.openFile -> sender: %@", [NSSound soundUnfilteredTypes]);
-    
     // Объект статусной панели
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     
