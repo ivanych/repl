@@ -2,8 +2,8 @@
 //  List.m
 //  Repl
 //
-//  Created by ivanych on 31.07.12.
-//
+//  Created by Mikhail Ivanov on 31.07.12.
+//  Copyright (c) 2012 Ivanych. All rights reserved.
 //
 
 #import "List.h"

@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  Repl
 //
-//  Created by ivan ivanych on 02.07.12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Mikhail Ivanov on 02.07.12.
+//  Copyright (c) 2012 Ivanych. All rights reserved.
 //
 
 #import "AppDelegate.h"
