@@ -57,6 +57,9 @@
     
     // Связать плеер с деревом меню
     [player setMenu:three];
+    
+    // Связать список с деревом меню
+    [trackList setMenu:three];
 }
 
 // Открыть файлы
@@ -171,7 +174,7 @@
     NSLog(@"App.turnRandom --------------------------------");
     NSLog(@"App.turnRandom -> sender: %@, ", sender);
     
-    [trackList turnRndFlag:sender];
+    [trackList turnRndFlag];
 }
 
 @end

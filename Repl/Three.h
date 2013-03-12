@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "List.h"
+
+@class List;
 
 @interface Three : NSObject{
     NSMenu *statusMenu;

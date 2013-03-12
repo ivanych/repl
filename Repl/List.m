@@ -7,6 +7,7 @@
 //
 
 #import "List.h"
+#import "Three.h"
 
 @implementation List
 
@@ -142,20 +143,20 @@
 }
 
 // Переключить флаг случайного режима воспроизведения
-- (void)turnRndFlag:(id)sender {
-    NSLog(@"List.turnRndFlag -> sender: %@", sender);
+- (void)turnRndFlag {
+    NSLog(@"List.turnRndFlag -> ()");
     
     if (rndFlag) {
-        rndFlag = 0;
-        [sender setState:NSOffState];
+        NSLog(@"List.turnRndFlag - rndFlag: 1");
         
-        NSLog(@"List.turnRndFlag - turn rndFlag: 1->0");
+        rndFlag = 0;
+        [menu markRndMenuItem:NSOffState];
     }
     else {
-        rndFlag = 1;
-        [sender setState:NSOnState];
+        NSLog(@"List.turnRndFlag - rndFlag: 0");
         
-        NSLog(@"List.turnRndFlag - turn rndFlag: 0->1");
+        rndFlag = 1;
+        [menu markRndMenuItem:NSOnState];
     }
 }
 
@@ -166,6 +167,11 @@
     NSLog(@"List.rndFlag <- %ld", rndFlag);
     
     return rndFlag;
+}
+
+// Связать плеер с меню
+- (void)setMenu:(id)m {
+    menu = m;
 }
 
 @end
