@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "List.h"
+
+@class List;
 
 @interface Three : NSObject{
     NSMenu *statusMenu;
@@ -21,10 +22,13 @@
 
 - (id)init;
 
-- (void)getPath:(id)path forMenu:(id)menu toList:(id)list;
-
+- (void)getPath:(id)path forMenu:(id)menu;
+- (void)openFile:(id)files;
+    
 - (void)markItem:(id)item state:(NSUInteger)state;
 - (void)markMenu:(NSUInteger)number;
+
+- (void)markRndMenuItem:(NSInteger)state;
 
 - (void)setMenu:(id)m;
 - (void)setList:(id)l;

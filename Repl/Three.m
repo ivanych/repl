@@ -26,7 +26,7 @@
     return self;
 }
 
-- (void)getPath:(id)path forMenu:(id)menu toList:(id)blist {
+- (void)getPath:(id)path forMenu:(id)menu {
     NSLog(@"Three.getPath -> path: %@", path);
     
     // Пропускаем скрытые файлы
@@ -68,7 +68,7 @@
             // Полный путь к файлу каталога
             NSString *fullpath = [NSString stringWithFormat:@"%@/%@", path, d];
             
-            [self getPath:fullpath forMenu:subMenu toList:blist];
+            [self getPath:fullpath forMenu:subMenu];
         }
     }
     // Если файл является файлом
@@ -84,7 +84,7 @@
         }
         
         // Добавляем трек в список
-        NSUInteger nTrack = [blist addTrack:path];
+        NSUInteger nTrack = [list addTrack:path];
         
         // Создаем пунт меню
         NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:fileName action:@selector(playTrack:) keyEquivalent:@""];
@@ -92,11 +92,30 @@
         [menu addItem:menuItem];
         
         // Линкуем трек с пунктом меню
-        [blist linkTrack:nTrack withItem:menuItem];
+        [list linkTrack:nTrack withItem:menuItem];
         
         NSLog(@"menu title: %@", [menu title]);
         NSLog(@"item title: %@", [menuItem title]);
     }
+}
+
+// Открыть выбранные файлы
+- (void)openFile:(id)files {
+    NSLog(@"Three.openFile -> files: %@", files);
+    
+    // Находим меню треков (тег "1" для пункта меню треков задан в редакторе, в файле интерфейса)
+    NSMenuItem * trackMenuItem = [statusMenu itemWithTag:1];
+    NSMenu * trackMenu = [trackMenuItem submenu];
+    
+    // Читаем все выбранные файлы
+    for(NSString *file in files) {
+        // Обход дерева файлов
+        [self getPath:file forMenu:trackMenu];
+    }
+    
+    // Разблокируем пункт меню треков
+    [trackMenuItem setEnabled:YES];
+
 }
 
 - (void)markItem:(id)item state:(NSUInteger)state {
@@ -140,6 +159,15 @@
     
     // Отметить в меню проигрываемый пункт
     [self markItem:item state:NSOnState];
+}
+ 
+// Отметить случайный режим воспроизведения в меню
+- (void)markRndMenuItem:(NSInteger)state {
+    NSLog(@"Three.markRndMenuItem -> state: %ld", state);
+    
+    // Назначаем обработчик пункту меню "Предыдущий" (тег "5" для пункта меню задан в редакторе, в файле интерфейса)
+    NSMenuItem *rndMenuItem = [statusMenu itemWithTag:5];
+    [rndMenuItem setState:state];
 }
 
 // Связать дерево с меню

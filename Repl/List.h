@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class Three;
+
 @interface List : NSObject {
     
     // Плейлист
@@ -18,6 +20,9 @@
     
     // Проигрываемый трек
     NSUInteger playTrack;
+    
+    // Меню
+    Three *menu;
 }
 
 - (id)init;
@@ -35,8 +40,11 @@
 
 - (NSUInteger)nextTrack;
 - (NSUInteger)prevTrack;
- 
-- (void)turnRndFlag:(id)sender;
+
+- (void)setRndFlag:(NSInteger)flag;
+- (void)turnRndFlag;
 - (NSUInteger)rndFlag;
+
+- (void)setMenu:(id)m;
 
 @end

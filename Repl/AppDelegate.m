@@ -57,6 +57,28 @@
     
     // Связать плеер с деревом меню
     [player setMenu:three];
+    
+    // Связать список с деревом меню
+    [trackList setMenu:three];
+    
+    // Конфиг
+    config = [NSUserDefaults standardUserDefaults];
+
+    // Восстановить список файлов из конфига
+    NSString *files = [config objectForKey:@"files"];
+    if (files) {
+        NSLog(@"App.awakeFromNib - files: %@", files);
+        
+        [three openFile:files];
+    }
+    
+    // Восстановить флаг случайного режима из конфига
+    NSInteger rndFlag = [config integerForKey:@"rndFlag"];
+    if (rndFlag) {
+        NSLog(@"App.awakeFromNib - rndFlag: %ld", rndFlag);
+        
+        [trackList setRndFlag:rndFlag];
+    }
 }
 
 // Открыть файлы
@@ -84,9 +106,6 @@
         NSMenuItem * trackMenuItem = [statusMenu itemWithTag:1];
         NSMenu * trackMenu = [trackMenuItem submenu];
         
-        // Разблокируем пункт меню треков
-        [trackMenuItem setEnabled:YES];
-        
         // Очищаем меню треков от предыдущего содержимого
         [trackMenu removeAllItems];
         
@@ -99,16 +118,25 @@
         // Очищаем список треков от предыдущего содержимого
         [trackList reset];
         
-        // Читаем все выбранные файлы
+        // Переформатируем открытые URL в path
+        NSMutableArray *files = [NSMutableArray arrayWithCapacity:1];
+        
         for(NSURL *url in urls) {
-            NSLog(@"URL:=  %@", url);
+            NSLog(@"App.openFile - url: %@", url);
             
             // Берем из URL только путь к файлу
             NSString *path = [url path];
+            NSLog(@"App.openFile - path: %@", path);
             
-            // Обход дерева файлов
-            [three getPath:path forMenu:trackMenu toList:trackList];
+            [files addObject:path];
         }
+        
+        // Сохраняем список выбранных файлов в конфиг
+        [config setObject:files forKey:@"files"];
+        [config synchronize];
+        
+        // Открыть список файлов
+        [three openFile:files];
         
         // Назначаем обработчик пункту меню "пуск/пауза" (тег "2" для пункта меню задан в редакторе, в файле интерфейса)
         NSMenuItem *pauseMenuItem = [statusMenu itemWithTag:2];
@@ -171,7 +199,11 @@
     NSLog(@"App.turnRandom --------------------------------");
     NSLog(@"App.turnRandom -> sender: %@, ", sender);
     
-    [trackList turnRndFlag:sender];
+    [trackList turnRndFlag];
+    
+    // Сохраняем флаг случайного режима в конфиг
+    [config setInteger:[trackList rndFlag] forKey:@"rndFlag"];
+    [config synchronize];
 }
 
 @end
