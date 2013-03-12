@@ -143,20 +143,29 @@
 }
 
 // Переключить флаг случайного режима воспроизведения
+- (void)setRndFlag:(NSInteger)flag {
+    NSLog(@"List.setRndFlag -> flag: %ld", flag);
+
+    rndFlag = flag;
+    NSLog(@"List.setRndFlag - set rndFlag: %ld", flag);
+    
+    [menu markRndMenuItem:flag];
+}
+
+// Переключить флаг случайного режима воспроизведения
 - (void)turnRndFlag {
     NSLog(@"List.turnRndFlag -> ()");
     
     if (rndFlag) {
         NSLog(@"List.turnRndFlag - rndFlag: 1");
         
-        rndFlag = 0;
-        [menu markRndMenuItem:NSOffState];
+        [self setRndFlag:NSOffState];
     }
     else {
         NSLog(@"List.turnRndFlag - rndFlag: 0");
         
         rndFlag = 1;
-        [menu markRndMenuItem:NSOnState];
+        [self setRndFlag:NSOnState];
     }
 }
 

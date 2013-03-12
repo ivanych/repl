@@ -40,7 +40,8 @@
 
 - (NSUInteger)nextTrack;
 - (NSUInteger)prevTrack;
- 
+
+- (void)setRndFlag:(NSInteger)flag;
 - (void)turnRndFlag;
 - (NSUInteger)rndFlag;
 
