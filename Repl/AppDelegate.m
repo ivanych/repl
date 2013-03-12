@@ -63,17 +63,22 @@
     
     // Конфиг
     config = [NSUserDefaults standardUserDefaults];
-    
+
+    // Восстановить список файлов из конфига
     NSString *files = [config objectForKey:@"files"];
     if (files) {
         NSLog(@"App.awakeFromNib - files: %@", files);
+        
+        [three openFile:files];
     }
     
-    // Восстановить флаг случайного режима
-    [trackList setRndFlag:0];
-    
-    // Восстановить список файлов
-    [three openFile:files];
+    // Восстановить флаг случайного режима из конфига
+    NSInteger rndFlag = [config integerForKey:@"rndFlag"];
+    if (rndFlag) {
+        NSLog(@"App.awakeFromNib - rndFlag: %ld", rndFlag);
+        
+        [trackList setRndFlag:rndFlag];
+    }
 }
 
 // Открыть файлы
@@ -195,6 +200,10 @@
     NSLog(@"App.turnRandom -> sender: %@, ", sender);
     
     [trackList turnRndFlag];
+    
+    // Сохраняем флаг случайного режима в конфиг
+    [config setInteger:[trackList rndFlag] forKey:@"rndFlag"];
+    [config synchronize];
 }
 
 @end
