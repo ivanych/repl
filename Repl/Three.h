@@ -22,7 +22,7 @@
 
 - (id)init;
 
-- (void)getPath:(id)path forMenu:(id)menu toList:(id)list;
+- (void)getPath:(id)path forMenu:(id)menu;
 
 - (void)markItem:(id)item state:(NSUInteger)state;
 - (void)markMenu:(NSUInteger)number;

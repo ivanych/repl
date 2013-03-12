@@ -113,7 +113,7 @@
             NSString *path = [url path];
             
             // Обход дерева файлов
-            [three getPath:path forMenu:trackMenu toList:trackList];
+            [three getPath:path forMenu:trackMenu];
         }
         
         // Назначаем обработчик пункту меню "пуск/пауза" (тег "2" для пункта меню задан в редакторе, в файле интерфейса)

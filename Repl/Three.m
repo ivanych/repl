@@ -26,7 +26,7 @@
     return self;
 }
 
-- (void)getPath:(id)path forMenu:(id)menu toList:(id)blist {
+- (void)getPath:(id)path forMenu:(id)menu {
     NSLog(@"Three.getPath -> path: %@", path);
     
     // Пропускаем скрытые файлы
@@ -68,7 +68,7 @@
             // Полный путь к файлу каталога
             NSString *fullpath = [NSString stringWithFormat:@"%@/%@", path, d];
             
-            [self getPath:fullpath forMenu:subMenu toList:blist];
+            [self getPath:fullpath forMenu:subMenu];
         }
     }
     // Если файл является файлом
@@ -84,7 +84,7 @@
         }
         
         // Добавляем трек в список
-        NSUInteger nTrack = [blist addTrack:path];
+        NSUInteger nTrack = [list addTrack:path];
         
         // Создаем пунт меню
         NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:fileName action:@selector(playTrack:) keyEquivalent:@""];
@@ -92,7 +92,7 @@
         [menu addItem:menuItem];
         
         // Линкуем трек с пунктом меню
-        [blist linkTrack:nTrack withItem:menuItem];
+        [list linkTrack:nTrack withItem:menuItem];
         
         NSLog(@"menu title: %@", [menu title]);
         NSLog(@"item title: %@", [menuItem title]);
