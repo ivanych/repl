@@ -61,11 +61,19 @@
     // Связать список с деревом меню
     [trackList setMenu:three];
     
+    // Конфиг
+    config = [NSUserDefaults standardUserDefaults];
+    
+    NSString *files = [config objectForKey:@"files"];
+    if (files) {
+        NSLog(@"App.awakeFromNib - files: %@", files);
+    }
+    
     // Восстановить флаг случайного режима
     [trackList setRndFlag:0];
     
     // Восстановить список файлов
-    [three openFile:@[@"/Users/ivanych/Моя музыка/Пассатижы"]];
+    [three openFile:files];
 }
 
 // Открыть файлы
@@ -105,9 +113,9 @@
         // Очищаем список треков от предыдущего содержимого
         [trackList reset];
         
+        // Переформатируем открытые URL в path
         NSMutableArray *files = [NSMutableArray arrayWithCapacity:1];
         
-        // Переформатируем открытые URL в path
         for(NSURL *url in urls) {
             NSLog(@"App.openFile - url: %@", url);
             
@@ -117,6 +125,10 @@
             
             [files addObject:path];
         }
+        
+        // Сохраняем список выбранных файлов в конфиг
+        [config setObject:files forKey:@"files"];
+        [config synchronize];
         
         // Открыть список файлов
         [three openFile:files];

@@ -30,6 +30,9 @@
     
     // Плеер
     Player *player;
+    
+    // Конфиг
+    NSUserDefaults *config;
 }
     
 @end
