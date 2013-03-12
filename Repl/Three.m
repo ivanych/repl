@@ -99,6 +99,25 @@
     }
 }
 
+// Открыть выбранные файлы
+- (void)openFile:(id)files {
+    NSLog(@"Three.openFile -> files: %@", files);
+    
+    // Находим меню треков (тег "1" для пункта меню треков задан в редакторе, в файле интерфейса)
+    NSMenuItem * trackMenuItem = [statusMenu itemWithTag:1];
+    NSMenu * trackMenu = [trackMenuItem submenu];
+    
+    // Читаем все выбранные файлы
+    for(NSString *file in files) {
+        // Обход дерева файлов
+        [self getPath:file forMenu:trackMenu];
+    }
+    
+    // Разблокируем пункт меню треков
+    [trackMenuItem setEnabled:YES];
+
+}
+
 - (void)markItem:(id)item state:(NSUInteger)state {
     NSLog(@"Three.markItem -> item: %@, state: %ld", item, state);
     

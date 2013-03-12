@@ -63,6 +63,9 @@
     
     // Восстановить флаг случайного режима
     [trackList setRndFlag:0];
+    
+    // Восстановить список файлов
+    [three openFile:@[@"/Users/ivanych/Моя музыка/Пассатижы"]];
 }
 
 // Открыть файлы
@@ -90,9 +93,6 @@
         NSMenuItem * trackMenuItem = [statusMenu itemWithTag:1];
         NSMenu * trackMenu = [trackMenuItem submenu];
         
-        // Разблокируем пункт меню треков
-        [trackMenuItem setEnabled:YES];
-        
         // Очищаем меню треков от предыдущего содержимого
         [trackMenu removeAllItems];
         
@@ -105,16 +105,21 @@
         // Очищаем список треков от предыдущего содержимого
         [trackList reset];
         
-        // Читаем все выбранные файлы
+        NSMutableArray *files = [NSMutableArray arrayWithCapacity:1];
+        
+        // Переформатируем открытые URL в path
         for(NSURL *url in urls) {
-            NSLog(@"URL:=  %@", url);
+            NSLog(@"App.openFile - url: %@", url);
             
             // Берем из URL только путь к файлу
             NSString *path = [url path];
+            NSLog(@"App.openFile - path: %@", path);
             
-            // Обход дерева файлов
-            [three getPath:path forMenu:trackMenu];
+            [files addObject:path];
         }
+        
+        // Открыть список файлов
+        [three openFile:files];
         
         // Назначаем обработчик пункту меню "пуск/пауза" (тег "2" для пункта меню задан в редакторе, в файле интерфейса)
         NSMenuItem *pauseMenuItem = [statusMenu itemWithTag:2];

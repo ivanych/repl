@@ -23,7 +23,8 @@
 - (id)init;
 
 - (void)getPath:(id)path forMenu:(id)menu;
-
+- (void)openFile:(id)files;
+    
 - (void)markItem:(id)item state:(NSUInteger)state;
 - (void)markMenu:(NSUInteger)number;
 
