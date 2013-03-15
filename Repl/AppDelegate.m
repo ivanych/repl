@@ -47,10 +47,10 @@
     // Плеер
     player =[[Player alloc] init];
     
-    // Связать файлы со статусным меню
-    [file setStatusMenu:statusMenu];
     // Связать файлы со списком
     [file setList:list];
+    // Связать файлы с меню
+    [file setMenu:menu];
     // Связать список с меню
     [list setMenu:menu];
     // Связать меню со списком

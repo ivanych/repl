@@ -21,6 +21,9 @@
 
 - (void)markRndMenuItem:(NSInteger)state;
 
+- (void)unlock;
+- (id)trackMenu;
+
 - (void)setStatusMenu:(id)m;
 - (void)setList:(id)l;
 

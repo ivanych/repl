@@ -8,6 +8,7 @@
 
 #import "File.h"
 #import "List.h"
+#import "Menu.h"
 
 @implementation File
 
@@ -103,9 +104,7 @@
 - (void)openFile:(id)files {
     NSLog(@"File.openFile -> files: %@", files);
     
-    // Находим меню треков (тег "1" для пункта меню треков задан в редакторе, в файле интерфейса)
-    NSMenuItem *trackMenuItem = [statusMenu itemWithTag:1];
-    NSMenu *trackMenu = [trackMenuItem submenu];
+    NSMenu *trackMenu = [menu trackMenu];
     
     // Читаем все выбранные файлы
     for(NSString *file in files) {
@@ -113,30 +112,18 @@
         [self getPath:file forMenu:trackMenu];
     }
     
-    // Разблокируем пункт меню треков
-    [trackMenuItem setEnabled:YES];
-    
-    // Назначаем обработчик пункту меню "Пуск/Пауза" (тег "2" для пункта меню задан в редакторе, в файле интерфейса)
-    NSMenuItem *pauseMenuItem = [statusMenu itemWithTag:2];
-    [pauseMenuItem setAction:@selector(pauseTrack:)];
-    
-    // Назначаем обработчик пункту меню "Следующий" (тег "3" для пункта меню задан в редакторе, в файле интерфейса)
-    NSMenuItem *nextMenuItem = [statusMenu itemWithTag:3];
-    [nextMenuItem setAction:@selector(nextTrack:)];
-    
-    // Назначаем обработчик пункту меню "Предыдущий" (тег "4" для пункта меню задан в редакторе, в файле интерфейса)
-    NSMenuItem *prevMenuItem = [statusMenu itemWithTag:4];
-    [prevMenuItem setAction:@selector(prevTrack:)];
-}
-
-// Связать файлы с меню
-- (void)setStatusMenu:(id)m {
-    statusMenu = m;
+    // Разблокировать пункты меню
+    [menu unlock];
 }
 
 // Связать файлы с плейлистом
 - (void)setList:(id)l {
     list = l;
+}
+
+// Связать файлы с меню
+- (void)setMenu:(id)m {
+    menu = m;
 }
 
 @end

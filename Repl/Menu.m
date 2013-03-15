@@ -63,12 +63,40 @@
     [rndMenuItem setState:state];
 }
 
-// Связать дерево с меню
+// Разблокировать пункты меню
+- (void)unlock {
+    // Разблокируем пункт меню "Треки" (тег "1" для пункта меню задан в редакторе, в файле интерфейса)
+    NSMenuItem *trackMenuItem = [statusMenu itemWithTag:1];
+    [trackMenuItem setEnabled:YES];
+    
+    // Назначаем обработчик пункту меню "Пуск/Пауза" (тег "2" для пункта меню задан в редакторе, в файле интерфейса)
+    NSMenuItem *pauseMenuItem = [statusMenu itemWithTag:2];
+    [pauseMenuItem setAction:@selector(pauseTrack:)];
+    
+    // Назначаем обработчик пункту меню "Следующий" (тег "3" для пункта меню задан в редакторе, в файле интерфейса)
+    NSMenuItem *nextMenuItem = [statusMenu itemWithTag:3];
+    [nextMenuItem setAction:@selector(nextTrack:)];
+    
+    // Назначаем обработчик пункту меню "Предыдущий" (тег "4" для пункта меню задан в редакторе, в файле интерфейса)
+    NSMenuItem *prevMenuItem = [statusMenu itemWithTag:4];
+    [prevMenuItem setAction:@selector(prevTrack:)];
+}
+
+// Меню треков
+- (id)trackMenu {
+    // Находим меню треков (тег "1" для пункта меню треков задан в редакторе, в файле интерфейса)
+    NSMenuItem *trackMenuItem = [statusMenu itemWithTag:1];
+    NSMenu *trackMenu = [trackMenuItem submenu];
+    
+    return trackMenu;
+}
+
+// Связать меню со статусным меню
 - (void)setStatusMenu:(id)m {
     statusMenu = m;
 }
 
-// Связать плеер с плейлистом
+// Связать плеер со списком
 - (void)setList:(id)l {
     list = l;
 }

@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 @class List;
+@class Menu;
 
 @interface File : NSObject {
     // Поддерживаемые типы файлов
@@ -16,8 +17,11 @@
     // Статусное меню
     NSMenu *statusMenu;
     
-    // Плейлист
+    // Список
     List *list;
+    
+    // Меню
+    Menu *menu;
 }
 
 - (id)init;
@@ -25,7 +29,7 @@
 - (void)getPath:(id)path forMenu:(id)smenu;
 - (void)openFile:(id)files;
 
-- (void)setStatusMenu:(id)m;
 - (void)setList:(id)l;
+- (void)setMenu:(id)m;
 
 @end
