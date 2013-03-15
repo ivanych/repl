@@ -18,8 +18,9 @@
 		683247F016D80C1600BF4C35 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 683247EE16D80C1600BF4C35 /* README */; };
 		6832480916D8201C00BF4C35 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 6832480816D8201C00BF4C35 /* icons */; };
 		6832480B16D829EC00BF4C35 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 6832480A16D829EC00BF4C35 /* LICENSE */; };
-		686CBCCE15AC56370059F046 /* Three.m in Sources */ = {isa = PBXBuildFile; fileRef = 686CBCCD15AC56370059F046 /* Three.m */; };
+		686CBCCE15AC56370059F046 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 686CBCCD15AC56370059F046 /* Menu.m */; };
 		68DC2E5F15C861F0004E3F54 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DC2E5E15C861F0004E3F54 /* List.m */; };
+		68FA2DD916F34A8600A303F1 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FA2DD816F34A8600A303F1 /* File.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,11 +43,13 @@
 		683247EE16D80C1600BF4C35 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = SOURCE_ROOT; };
 		6832480816D8201C00BF4C35 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icons; sourceTree = "<group>"; };
 		6832480A16D829EC00BF4C35 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		686CBCCC15AC56370059F046 /* Three.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Three.h; sourceTree = "<group>"; };
-		686CBCCD15AC56370059F046 /* Three.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Three.m; sourceTree = "<group>"; };
+		686CBCCC15AC56370059F046 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
+		686CBCCD15AC56370059F046 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		68C7FCE515A5A3B100B94DF5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		68DC2E5D15C861F0004E3F54 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
 		68DC2E5E15C861F0004E3F54 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
+		68FA2DD716F34A8600A303F1 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
+		68FA2DD816F34A8600A303F1 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +108,10 @@
 			children = (
 				682EB1D315A1E1A60060AC31 /* AppDelegate.h */,
 				682EB1D415A1E1A60060AC31 /* AppDelegate.m */,
-				686CBCCC15AC56370059F046 /* Three.h */,
-				686CBCCD15AC56370059F046 /* Three.m */,
+				68FA2DD716F34A8600A303F1 /* File.h */,
+				68FA2DD816F34A8600A303F1 /* File.m */,
+				686CBCCC15AC56370059F046 /* Menu.h */,
+				686CBCCD15AC56370059F046 /* Menu.m */,
 				68DC2E5D15C861F0004E3F54 /* List.h */,
 				68DC2E5E15C861F0004E3F54 /* List.m */,
 				681E3D7016CD0462001FAE2B /* Player.h */,
@@ -200,9 +205,10 @@
 			files = (
 				682EB1CE15A1E1A60060AC31 /* main.m in Sources */,
 				682EB1D515A1E1A60060AC31 /* AppDelegate.m in Sources */,
-				686CBCCE15AC56370059F046 /* Three.m in Sources */,
+				686CBCCE15AC56370059F046 /* Menu.m in Sources */,
 				68DC2E5F15C861F0004E3F54 /* List.m in Sources */,
 				681E3D7216CD0462001FAE2B /* Player.m in Sources */,
+				68FA2DD916F34A8600A303F1 /* File.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

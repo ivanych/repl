@@ -7,8 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
-@class Three;
+@class Menu;
 
 @interface List : NSObject {
     
@@ -22,7 +21,7 @@
     NSUInteger playTrack;
     
     // Меню
-    Three *menu;
+    Menu *menu;
 }
 
 - (id)init;

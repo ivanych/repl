@@ -7,9 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import "Three.h"
+#import "File.h"
+#import "Menu.h"
 #import "List.h"
-
+#import "Player.h"
 
 @implementation AppDelegate
 
@@ -37,29 +38,29 @@
     [statusItem setHighlightMode:YES];
     [statusItem setToolTip:@"Repl"];
     
-    // Дерево меню
-    three = [[Three alloc] init];
-    
-    // Связать дерево с меню
-    [three setMenu:statusMenu];
-    
-    // Список треков
-    trackList = [[List alloc] init];
-    
-    // Связать дерево со списком треков
-    [three setList:trackList];
-    
+    // Файлы
+    file = [[File alloc] init];
+    // Меню
+    menu = [[Menu alloc] init];
+    // Список
+    list = [[List alloc] init];
     // Плеер
     player =[[Player alloc] init];
     
-    // Связать плеер со списком треков
-    [player setList:trackList];
-    
-    // Связать плеер с деревом меню
-    [player setMenu:three];
-    
-    // Связать список с деревом меню
-    [trackList setMenu:three];
+    // Связать файлы со списком
+    [file setList:list];
+    // Связать файлы с меню
+    [file setMenu:menu];
+    // Связать список с меню
+    [list setMenu:menu];
+    // Связать меню со списком
+    [menu setList:list];
+    // Связать меню со статусным меню
+    [menu setStatusMenu:statusMenu];
+    // Связать плеер с меню
+    [player setMenu:menu];
+    // Связать плеер cо списком
+    [player setList:list];
     
     // Конфиг
     config = [NSUserDefaults standardUserDefaults];
@@ -69,7 +70,7 @@
     if (files) {
         NSLog(@"App.awakeFromNib - files: %@", files);
         
-        [three openFile:files];
+        [file openFile:files];
     }
     
     // Восстановить флаг случайного режима из конфига
@@ -77,7 +78,7 @@
     if (rndFlag) {
         NSLog(@"App.awakeFromNib - rndFlag: %ld", rndFlag);
         
-        [trackList setRndFlag:rndFlag];
+        [list setRndFlag:rndFlag];
     }
 }
 
@@ -113,10 +114,10 @@
         [player stop];
         
         // Обнуляем проигрываемый трек
-        [trackList setPlayTrack:0];
+        [list setPlayTrack:0];
         
         // Очищаем список треков от предыдущего содержимого
-        [trackList reset];
+        [list reset];
         
         // Переформатируем открытые URL в path
         NSMutableArray *files = [NSMutableArray arrayWithCapacity:1];
@@ -136,7 +137,7 @@
         [config synchronize];
         
         // Открыть список файлов
-        [three openFile:files];
+        [file openFile:files];
     }
 }
 
@@ -187,10 +188,10 @@
     NSLog(@"App.turnRandom --------------------------------");
     NSLog(@"App.turnRandom -> sender: %@, ", sender);
     
-    [trackList turnRndFlag];
+    [list turnRndFlag];
     
     // Сохраняем флаг случайного режима в конфиг
-    [config setInteger:[trackList rndFlag] forKey:@"rndFlag"];
+    [config setInteger:[list rndFlag] forKey:@"rndFlag"];
     [config synchronize];
 }
 
