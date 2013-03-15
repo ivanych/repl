@@ -7,9 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "File.h"
+#import "Menu.h"
 #import "List.h"
 #import "Player.h"
-#import "Three.h"
+
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     // Графический интерфейс приложения (меню)
@@ -22,11 +24,14 @@
     NSImage *statusImage1;
     NSImage *statusImage2;
     
-    // Дерево меню
-    Three *three;
+    // Файлы
+    File *file;
     
-    // Список треков
-    List *trackList;
+    // Дерево меню
+    Menu *menu;
+    
+    // Список
+    List *list;
     
     // Плеер
     Player *player;

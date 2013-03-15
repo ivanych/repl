@@ -8,18 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 #import "List.h"
-#import "Three.h"
+#import "Menu.h"
 
 @interface Player : NSObject <NSSoundDelegate> {
     
     // Проигрыватель
     NSSound *sound;
     
-    // Плейлист
+    // Cписок
     List *list;
     
     // Меню
-    Three *menu;
+    Menu *menu;
     
     // Флаг проигрывания
     BOOL isPlay;
