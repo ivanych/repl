@@ -7,8 +7,8 @@
 //
 
 #import "File.h"
-#import "List.h"
 #import "Menu.h"
+#import "List.h"
 
 @implementation File
 
@@ -116,14 +116,14 @@
     [menu unlock];
 }
 
-// Связать файлы с плейлистом
-- (void)setList:(id)l {
-    list = l;
-}
-
 // Связать файлы с меню
 - (void)setMenu:(id)m {
     menu = m;
+}
+
+// Связать файлы с плейлистом
+- (void)setList:(id)l {
+    list = l;
 }
 
 @end

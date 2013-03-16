@@ -25,6 +25,7 @@
     
     [sound stop];
     isPlay = NO;
+    [menu markPause:0];
     NSLog(@"Player.stop - sound stop");
 }
 
@@ -34,6 +35,7 @@
     
     [sound resume];
     isPlay = YES;
+    [menu markPause:1];
     NSLog(@"Player.resume - sound set resume");
 }
 
@@ -43,6 +45,7 @@
     
     [sound pause];
     isPlay = NO;
+    [menu markPause:0];
     NSLog(@"Player.pause - sound set pause");
 }
 
@@ -61,6 +64,7 @@
     sound = [sound initWithContentsOfFile:path byReference:false];
     [sound play];
     isPlay = YES;
+    [menu markPause:1];
     NSLog(@"Player.playFile - sound play");
 }
 
@@ -149,14 +153,15 @@
     }
 }
 
+// Связать плеер с меню
+- (void)setMenu:(id)m {
+    menu = m;
+}
+
 // Связать плеер с плейлистом
 - (void)setList:(id)l {
     list = l;
 }
 
-// Связать плеер с меню
-- (void)setMenu:(id)m {
-    menu = m;
-}
 
 @end

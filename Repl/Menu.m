@@ -11,6 +11,59 @@
 
 @implementation Menu
 
+- (id)init {
+    if (self = [super init]) {
+        
+        // Объект для работы с файлами
+        NSBundle *bundle = [NSBundle mainBundle];
+        
+        // Загрузка изображений для кнопок
+        imageMenu1 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"menu1" ofType:@"png" inDirectory:@"icons"]];
+        imageMenu2 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"menu2" ofType:@"png" inDirectory:@"icons"]];
+        
+        imagePlay1 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"play1" ofType:@"png" inDirectory:@"icons"]];
+        imagePlay2 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"play2" ofType:@"png" inDirectory:@"icons"]];
+        
+        imagePause1 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"pause1" ofType:@"png" inDirectory:@"icons"]];
+        imagePause2 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"pause2" ofType:@"png" inDirectory:@"icons"]];
+        
+        imagePrev1 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"prev1" ofType:@"png" inDirectory:@"icons"]];
+        imagePrev2 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"prev2" ofType:@"png" inDirectory:@"icons"]];
+        
+        imageNext1 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"next1" ofType:@"png" inDirectory:@"icons"]];
+        imageNext2 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"next2" ofType:@"png" inDirectory:@"icons"]];
+        
+        // Статусная кнопка "Следующий"
+        statusItemNext = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+        [statusItemNext setEnabled:NO];
+        [statusItemNext setImage:imageNext1];
+        [statusItemNext setAlternateImage:imageNext2];
+        [statusItemNext setAction:@selector(nextTrack:)];
+        
+        // Статусная кнопка "Пуск/Пауза"
+        statusItemPause = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+        [statusItemPause setEnabled:NO];
+        [statusItemPause setImage:imagePlay1];
+        [statusItemPause setAlternateImage:imagePlay2];
+        [statusItemPause setAction:@selector(pauseTrack:)];
+        
+        // Статусная кнопка "Предыдущий"
+        statusItemPrev = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+        [statusItemPrev setEnabled:NO];
+        [statusItemPrev setImage:imagePrev1];
+        [statusItemPrev setAlternateImage:imagePrev2];
+        [statusItemPrev setAction:@selector(prevTrack:)];
+        
+        // Статусная кнопка "Меню"
+        statusItemMenu = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+        [statusItemMenu setImage:imageMenu1];
+        [statusItemMenu setAlternateImage:imageMenu2];
+        [statusItemMenu setHighlightMode:YES];
+    }
+    
+    return self;
+}
+
 - (void)markItem:(id)item state:(NSUInteger)state {
     NSLog(@"Menu.markItem -> item: %@, state: %ld", item, state);
     
@@ -63,6 +116,21 @@
     [rndMenuItem setState:state];
 }
 
+// Отметить кнопку "Пуск/Пауза"
+- (void)markPause:(NSInteger)pause {
+    NSLog(@"Menu.markPause -> pause: %ld", pause);
+    
+    // Меняем изображение кнопки
+    if (pause) {
+        [statusItemPause setImage:imagePause1];
+        [statusItemPause setAlternateImage:imagePause2];
+    }
+    else {
+        [statusItemPause setImage:imagePlay1];
+        [statusItemPause setAlternateImage:imagePlay2];
+    }
+}
+
 // Разблокировать пункты меню
 - (void)unlock {
     // Разблокируем пункт меню "Треки" (тег "1" для пункта меню задан в редакторе, в файле интерфейса)
@@ -72,14 +140,17 @@
     // Назначаем обработчик пункту меню "Пуск/Пауза" (тег "2" для пункта меню задан в редакторе, в файле интерфейса)
     NSMenuItem *pauseMenuItem = [statusMenu itemWithTag:2];
     [pauseMenuItem setAction:@selector(pauseTrack:)];
+    [statusItemPause setEnabled:YES];
     
     // Назначаем обработчик пункту меню "Следующий" (тег "3" для пункта меню задан в редакторе, в файле интерфейса)
     NSMenuItem *nextMenuItem = [statusMenu itemWithTag:3];
     [nextMenuItem setAction:@selector(nextTrack:)];
+    [statusItemNext setEnabled:YES];
     
     // Назначаем обработчик пункту меню "Предыдущий" (тег "4" для пункта меню задан в редакторе, в файле интерфейса)
     NSMenuItem *prevMenuItem = [statusMenu itemWithTag:4];
     [prevMenuItem setAction:@selector(prevTrack:)];
+    [statusItemPrev setEnabled:YES];
 }
 
 // Меню треков
@@ -94,6 +165,7 @@
 // Связать меню со статусным меню
 - (void)setStatusMenu:(id)m {
     statusMenu = m;
+    [statusItemMenu setMenu:statusMenu];
 }
 
 // Связать плеер со списком
