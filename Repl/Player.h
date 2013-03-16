@@ -7,19 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "List.h"
 #import "Menu.h"
+#import "List.h"
 
 @interface Player : NSObject <NSSoundDelegate> {
     
     // Проигрыватель
     NSSound *sound;
     
-    // Cписок
-    List *list;
-    
     // Меню
     Menu *menu;
+    
+    // Cписок
+    List *list;
     
     // Флаг проигрывания
     BOOL isPlay;
@@ -37,8 +37,8 @@
 - (void)playNextTrack;
 - (void)playPrevTrack;
 
-- (void)setList:(id)l;
 - (void)setMenu:(id)m;
+- (void)setList:(id)l;
 
 - (void)sound:(NSSound *)sound didFinishPlaying:(BOOL)playbackSuccessful;
 

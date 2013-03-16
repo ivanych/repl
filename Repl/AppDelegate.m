@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "File.h"
 #import "Menu.h"
+#import "File.h"
 #import "List.h"
 #import "Player.h"
 
@@ -16,47 +16,26 @@
 
 // Инициализация приложения
 - (void)awakeFromNib {
-    // Объект статусной панели
-    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     
-    // Объект для работы с файлами
-    NSBundle *bundle = [NSBundle mainBundle];
-    
-    // Загрузка изображений для иконки
-    statusImage1 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon1"
-                                                                            ofType:@"png"
-                                                                       inDirectory:@"icons"]];
-    
-    statusImage2 = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"icon2"
-                                                                            ofType:@"png"
-                                                                       inDirectory:@"icons"]];
-    
-    // Параметры объекта статусной панели
-    [statusItem setMenu:statusMenu];
-    [statusItem setImage:statusImage1];
-    [statusItem setAlternateImage:statusImage2];
-    [statusItem setHighlightMode:YES];
-    [statusItem setToolTip:@"Repl"];
-    
-    // Файлы
-    file = [[File alloc] init];
     // Меню
     menu = [[Menu alloc] init];
+    // Файлы
+    file = [[File alloc] init];
     // Список
     list = [[List alloc] init];
     // Плеер
     player =[[Player alloc] init];
-    
+
+    // Связать меню со статусным меню
+    [menu setStatusMenu:statusMenu];
+    // Связать меню со списком
+    [menu setList:list];
     // Связать файлы со списком
     [file setList:list];
     // Связать файлы с меню
     [file setMenu:menu];
     // Связать список с меню
     [list setMenu:menu];
-    // Связать меню со списком
-    [menu setList:list];
-    // Связать меню со статусным меню
-    [menu setStatusMenu:statusMenu];
     // Связать плеер с меню
     [player setMenu:menu];
     // Связать плеер cо списком
@@ -104,8 +83,10 @@
         NSArray *urls = [fileDialog URLs];
         
         // Находим меню треков (тег "1" для пункта меню треков задан в редакторе, в файле интерфейса)
-        NSMenuItem * trackMenuItem = [statusMenu itemWithTag:1];
-        NSMenu * trackMenu = [trackMenuItem submenu];
+        //NSMenuItem * trackMenuItem = [statusMenu itemWithTag:1];
+        //NSMenu * trackMenu = [trackMenuItem submenu];
+        
+        NSMenu * trackMenu = [menu trackMenu];
         
         // Очищаем меню треков от предыдущего содержимого
         [trackMenu removeAllItems];
