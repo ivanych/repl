@@ -137,19 +137,9 @@
     NSMenuItem *trackMenuItem = [statusMenu itemWithTag:1];
     [trackMenuItem setEnabled:YES];
     
-    // Назначаем обработчик пункту меню "Пуск/Пауза" (тег "2" для пункта меню задан в редакторе, в файле интерфейса)
-    NSMenuItem *pauseMenuItem = [statusMenu itemWithTag:2];
-    [pauseMenuItem setAction:@selector(pauseTrack:)];
-    [statusItemPause setEnabled:YES];
-    
-    // Назначаем обработчик пункту меню "Следующий" (тег "3" для пункта меню задан в редакторе, в файле интерфейса)
-    NSMenuItem *nextMenuItem = [statusMenu itemWithTag:3];
-    [nextMenuItem setAction:@selector(nextTrack:)];
+    // Разблокируем контролы
     [statusItemNext setEnabled:YES];
-    
-    // Назначаем обработчик пункту меню "Предыдущий" (тег "4" для пункта меню задан в редакторе, в файле интерфейса)
-    NSMenuItem *prevMenuItem = [statusMenu itemWithTag:4];
-    [prevMenuItem setAction:@selector(prevTrack:)];
+    [statusItemPause setEnabled:YES];
     [statusItemPrev setEnabled:YES];
 }
 
