@@ -28,11 +28,14 @@
 
 - (void)reset;
 
-- (NSUInteger)addTrack:(id)path;
+- (NSUInteger)addTrack:(id)path artist:(id)a title:(id)t;
 - (void)linkTrack:(NSUInteger)number withItem:(id)item;
 
 - (id)path:(NSUInteger)number;
 - (id)item:(NSUInteger)number;
+
+- (id)artist:(NSUInteger)number;
+- (id)title:(NSUInteger)number;
 
 - (void)setPlayTrack:(NSUInteger)number;
 - (NSUInteger)playTrack;

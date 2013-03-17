@@ -36,6 +36,8 @@
 - (void)markItem:(id)item state:(NSUInteger)state;
 - (void)markMenu:(NSUInteger)number;
 
+- (void)changeSuggest:(id)suggest;
+
 - (void)markRndMenuItem:(NSInteger)state;
 - (void)markPause:(NSInteger)pause;
 

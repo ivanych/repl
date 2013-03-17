@@ -106,6 +106,13 @@
     // Отметить в меню проигрываемый пункт
     [self markItem:item state:NSOnState];
 }
+
+// Установить подсказку с проигрываемым треком
+- (void)changeSuggest:(id)suggest {
+    NSLog(@"Menu.changeSuggest -> suggest: %@", suggest);
+    
+    [statusItemMenu setToolTip:suggest];
+}
  
 // Отметить случайный режим воспроизведения в меню
 - (void)markRndMenuItem:(NSInteger)state {

@@ -81,6 +81,10 @@
     // Отметить проигрываемый трек в меню
     [menu markMenu:number];
     
+    // Сменить подсказку с названием трека
+    NSString *suggest = [[[list artist:number] stringByAppendingString:@"\n"] stringByAppendingString:[list title:number]];
+    [menu changeSuggest:suggest];
+    
     // Запомнить проигрываемый трек
     [list setPlayTrack:number];
 }

@@ -29,9 +29,12 @@
 }
 
 // Добавить трек в список
-- (NSUInteger)addTrack:(id)path {
+- (NSUInteger)addTrack:(id)path artist:(id)a title:(id)t {
     
     NSMutableDictionary *h = [NSMutableDictionary dictionaryWithObject:path forKey:@"path"];
+    
+    [h setObject:a forKey:@"artist"];
+    [h setObject:t forKey:@"title"];
     
     [hlist addObject:h];
     
@@ -61,6 +64,22 @@
     NSLog(@"List.item <- item: %@", [[hlist objectAtIndex:number-1] objectForKey:@"item"]);
     
     return [[hlist objectAtIndex:number-1] objectForKey:@"item"];
+}
+
+- (id)artist:(NSUInteger)number {
+    NSLog(@"List.artist -> number: %ld", number);
+    
+    NSLog(@"List.artist <- artist: %@", [[hlist objectAtIndex:number-1] objectForKey:@"artist"]);
+    
+    return [[hlist objectAtIndex:number-1] objectForKey:@"artist"];
+}
+
+- (id)title:(NSUInteger)number {
+    NSLog(@"List.title -> number: %ld", number);
+    
+    NSLog(@"List.title <- title: %@", [[hlist objectAtIndex:number-1] objectForKey:@"title"]);
+    
+    return [[hlist objectAtIndex:number-1] objectForKey:@"title"];
 }
 
 // Установить текущий проигрываемый трек плейлиста
