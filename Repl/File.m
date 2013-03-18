@@ -84,8 +84,12 @@
             return;
         }
         
+        // Читаем теги
+        NSString *artist = @"Artist";
+        NSString *title = @"Title";
+        
         // Добавляем трек в список
-        NSUInteger nTrack = [list addTrack:path];
+        NSUInteger nTrack = [list addTrack:path artist:artist title:title];
         
         // Создаем пунт меню
         NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:fileName action:@selector(playTrack:) keyEquivalent:@""];
