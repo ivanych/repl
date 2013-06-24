@@ -12,20 +12,48 @@
 
 - (id)init {
     if (self = [super init]) {
-        sound = [NSSound alloc];
-        [sound setDelegate: self];
+
     }
 
     return self;
+}
+
+// Открыт ли какой-либо трек
+- (BOOL)isOpen {
+    NSLog(@"Player.isOpen -> ()");
+    
+    if ([avsound url]) {
+        NSLog(@"Player.isOpen <- 1");
+        return TRUE;
+    }
+    else {
+        NSLog(@"Player.isOpen <- 0");
+        return FALSE;
+    }
+}
+
+// Открыт ли какой-либо трек
+- (BOOL)isPlay {
+    NSLog(@"Player.isPlay -> ()");
+    
+    if ([avsound isPlaying]) {
+        NSLog(@"Player.isPlay <- 1");
+        return TRUE;
+    }
+    else {
+        NSLog(@"Player.isPlay <- 0");
+        return FALSE;
+    }
 }
 
 // Остановить проигрывание
 - (void)stop {
     NSLog(@"Player.stop -> ()");
     
-    [sound stop];
-    isPlay = NO;
+    [avsound stop];
+    avsound = nil;
     [menu markPause:0];
+    
     NSLog(@"Player.stop - sound stop");
 }
 
@@ -33,39 +61,48 @@
 - (void)resume {
     NSLog(@"Player.resume -> ()");
     
-    [sound resume];
-    isPlay = YES;
+    [avsound play];
     [menu markPause:1];
-    NSLog(@"Player.resume - sound set resume");
+    
+    NSLog(@"Player.resume - sound resume");
 }
 
 // Приостановить проигрывание
 - (void)pause {
     NSLog(@"Player.pause -> ()");
     
-    [sound pause];
-    isPlay = NO;
+    [avsound pause];
     [menu markPause:0];
-    NSLog(@"Player.pause - sound set pause");
+    
+    NSLog(@"Player.pause - sound pause");
+}
+
+// Запустить проигрывание
+- (void)play {
+    NSLog(@"Player.play -> ()");
+    
+    [avsound play];
+    [menu markPause:1];
+    
+    NSLog(@"Player.play - sound play");
 }
 
 // Запустить проигрывание файла
-- (void)playFile:(id)path {
+- (void)open:(id)path {
     NSLog(@"Player.playFile -> path: %@", path);
     
-    // Если что-то уже играет - остановить
-    if ([sound isPlaying]) {
-        NSLog(@"Player.playFile - sound isPlaying");
+    // Если что-то уже играет - обнулить
+    if ([avsound url]) {
+        NSLog(@"Player.playFile - sound initialized, nil");
         
         [self stop];
     }
     
-    // Открыть файл и запустить
-    sound = [sound initWithContentsOfFile:path byReference:false];
-    [sound play];
-    isPlay = YES;
-    [menu markPause:1];
-    NSLog(@"Player.playFile - sound play");
+    // Открыть файл
+    avsound = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:nil];
+    [avsound setDelegate: self];
+    
+    NSLog(@"Player.playFile - sound initialized");
 }
 
 // Запустить проигрывание трека
@@ -75,8 +112,11 @@
     // Путь к файлу трека
     NSString *path = [list path:number];
 
-    // Запустить проигрывание файла
-    [self playFile:path];
+    // Открыть трек из файла
+    [self open:path];
+    
+    // Запустить проигрывание трека
+    [self play];
     
     // Отметить проигрываемый трек в меню
     [menu markMenu:number];
@@ -94,32 +134,24 @@
     NSLog(@"Player.pauseTrack -> ()");
     
     // Если что-то уже играет - приостановить или продолжить
-    if ([sound isPlaying]) {
-        NSLog(@"Player.pauseTrack - sound isPlaying");
-        
-        // Если трек проигрывается - приостановить
-        if (isPlay) {
-            NSLog(@"Player.pauseTrack - sound isPlay");
-            
+    if ([self isOpen]) {        
+        // Если трек запущен - приостановить
+        if ([self isPlay]) {
             [self pause];
         }
+        // Если на паузе - продолжить
         else {
-            NSLog(@"Player.pauseTrack - sound notPlay");
-            
             [self resume];
         }
     }
     // Если ничего не играет - запустить проигрывание
     else {
-        NSLog(@"Player.pauseTrack - sound notPlaying");
-        
         [self playNextTrack];
     }
 }
 
 // Запустить проигрывание следующего трека
 - (void)playNextTrack {
-    NSLog(@"Player.playNextTrack - - - - - - - - - - - - - - -");
     NSLog(@"Player.playNextTrack -> ()");
     
     // Следующий трек
@@ -132,7 +164,6 @@
 
 // Запустить проигрывание предыдущего трека
 - (void)playPrevTrack {
-    NSLog(@"Player.playPrevTrack - - - - - - - - - - - - - - -");
     NSLog(@"Player.playPrevTrack -> ()");
     
     // Предыдущий трек
@@ -144,16 +175,16 @@
 }
 
 // Вызывается после завершения проигрывания трека
-- (void)sound:(NSSound *)snd didFinishPlaying:(BOOL)playbackSuccessful {
-    NSLog(@"Player.sound -> snd: %@, playbackSuccessful: %hhd", snd, playbackSuccessful);
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    NSLog(@"Player.audioPlayerDidFinishPlaying -> player: %@, successfully: %hhd", player, flag);
     
-    if (playbackSuccessful) {
-        NSLog(@"Player.sound - current sound end");
+    if (flag) {
+        NSLog(@"Player.audioPlayerDidFinishPlaying - current track end");
         
         [self playNextTrack];
     }
     else {
-        NSLog(@"Player.sound - current sound interrupt!");
+        NSLog(@"Player.audioPlayerDidFinishPlaying - current track error!");
     }
 }
 
