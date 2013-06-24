@@ -7,30 +7,32 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <AVFoundation/AVFoundation.h>
 #import "Menu.h"
 #import "List.h"
 
-@interface Player : NSObject <NSSoundDelegate> {
+@interface Player : NSObject <AVAudioPlayerDelegate> {
     
     // Проигрыватель
-    NSSound *sound;
+    AVAudioPlayer *avsound;
     
     // Меню
     Menu *menu;
     
     // Cписок
     List *list;
-    
-    // Флаг проигрывания
-    BOOL isPlay;
 }
 
 - (id)init;
 
+- (BOOL)isOpen;
+- (BOOL)isPlay;
 - (void)stop;
 - (void)resume;
 - (void)pause;
-- (void)playFile:(id)path;
+- (void)play;
+- (void)open:(id)path;
+
 - (void)playTrack:(NSUInteger)number;
 - (void)pauseTrack;
 
@@ -40,6 +42,6 @@
 - (void)setMenu:(id)m;
 - (void)setList:(id)l;
 
-- (void)sound:(NSSound *)sound didFinishPlaying:(BOOL)playbackSuccessful;
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag;
 
 @end

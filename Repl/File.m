@@ -15,12 +15,17 @@
 - (id)init {
     if (self = [super init]) {
         // Поддерживаемые типы файлов
-        supportType = @[@"aiff", @"aif", @"aifc",
-                        @"wave", @"wav",
-                        @"au", @"ulw", @"snd",
+        // (согласно таблице http://developer.apple.com/library/ios/#documentation/MusicAudio/Conceptual/CoreAudioOverview/SupportedAudioFormatsMacOSX/SupportedAudioFormatsMacOSX.html )
+        supportType = @[@"aac", @"adts",
+                        @"ac3",
+                        @"aif", @"aiff", @"aifc",
+                        @"caf",
                         @"mp3",
-                        @"m4p", @"m4b",
+                        @"mp4",
                         @"m4a"
+                        @"snd", @"au",
+                        @"sd2"
+                        @"wav", @"wave",
                         ];
     }
     
