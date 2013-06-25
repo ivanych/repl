@@ -90,14 +90,32 @@
         }
         
         // Читаем теги
-        NSString *artist = @"Artist";
-        NSString *title = @"Title";
+        AVAsset *asset = [AVAsset assetWithURL:[NSURL fileURLWithPath:path]];
+        NSArray *metadata = [asset commonMetadata];
+        NSArray *artists = [AVMetadataItem metadataItemsFromArray:metadata withKey:AVMetadataCommonKeyArtist keySpace:AVMetadataKeySpaceCommon];
+        NSArray *titles = [AVMetadataItem metadataItemsFromArray:metadata withKey:AVMetadataCommonKeyTitle keySpace:AVMetadataKeySpaceCommon];
+
+        NSString *artist;
+        if ([artists count] > 0) {
+            artist = [[artists objectAtIndex:0] stringValue];
+        }
+        else {
+            artist = @"Unknown Artist";
+        }
+        
+        NSString *title;
+        if ([titles count] > 0) {
+            title = [[titles objectAtIndex:0] stringValue];
+        }
+        else {
+            title = fileName;
+        }
         
         // Добавляем трек в список
         NSUInteger nTrack = [list addTrack:path artist:artist title:title];
         
         // Создаем пунт меню
-        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:fileName action:@selector(playTrack:) keyEquivalent:@""];
+        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector(playTrack:) keyEquivalent:@""];
         [menuItem setTag:nTrack+100];
         [smenu addItem:menuItem];
         
