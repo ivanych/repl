@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "Menu.h"
 #import "List.h"
+#import "Scrobbler.h"
 
 @interface Player : NSObject <AVAudioPlayerDelegate> {
     
@@ -21,6 +22,9 @@
     
     // Cписок
     List *list;
+    
+    // Cписок
+    Scrobbler * scrobbler;
 }
 
 - (id)init;
@@ -41,6 +45,7 @@
 
 - (void)setMenu:(id)m;
 - (void)setList:(id)l;
+- (void)setScrobbler:(id)s;
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag;
 

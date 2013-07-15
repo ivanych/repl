@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.SystemVersion">12E55</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.AppKitVersion">1187.39</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			<string key="NS.object.0">3084</string>
@@ -92,6 +92,15 @@
 						<reference key="NSMixedImage" ref="597232084"/>
 						<int key="NSTag">5</int>
 					</object>
+					<object class="NSMenuItem" id="939932306">
+						<reference key="NSMenu" ref="435703531"/>
+						<string key="NSTitle">Скробблинг в Last.fm</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="287282838"/>
+						<reference key="NSMixedImage" ref="597232084"/>
+						<int key="NSTag">6</int>
+					</object>
 					<object class="NSMenuItem" id="891405356">
 						<reference key="NSMenu" ref="435703531"/>
 						<bool key="NSIsDisabled">YES</bool>
@@ -155,6 +164,14 @@
 					</object>
 					<int key="connectionID">559</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">turnScrobbling:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="939932306"/>
+					</object>
+					<int key="connectionID">561</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -202,6 +219,7 @@
 							<reference ref="523099766"/>
 							<reference ref="337052140"/>
 							<reference ref="891405356"/>
+							<reference ref="939932306"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -244,6 +262,11 @@
 						<reference key="object" ref="891405356"/>
 						<reference key="parent" ref="435703531"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">560</int>
+						<reference key="object" ref="939932306"/>
+						<reference key="parent" ref="435703531"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -260,12 +283,13 @@
 				<string key="546.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="547.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="548.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="560.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">559</int>
+			<int key="maxID">561</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

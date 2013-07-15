@@ -18,8 +18,10 @@
 		683247F016D80C1600BF4C35 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 683247EE16D80C1600BF4C35 /* README */; };
 		6832480916D8201C00BF4C35 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 6832480816D8201C00BF4C35 /* icons */; };
 		6832480B16D829EC00BF4C35 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 6832480A16D829EC00BF4C35 /* LICENSE */; };
+		6852A94617947418006F606B /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 6852A94517947418006F606B /* Common.m */; };
 		686CBCCE15AC56370059F046 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 686CBCCD15AC56370059F046 /* Menu.m */; };
 		68A4840B1778B89A005B7F4E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68A4840A1778B89A005B7F4E /* AVFoundation.framework */; };
+		68A4840E177E1820005B7F4E /* Scrobbler.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A4840D177E1820005B7F4E /* Scrobbler.m */; };
 		68DC2E5F15C861F0004E3F54 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DC2E5E15C861F0004E3F54 /* List.m */; };
 		68FA2DD916F34A8600A303F1 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FA2DD816F34A8600A303F1 /* File.m */; };
 /* End PBXBuildFile section */
@@ -44,9 +46,13 @@
 		683247EE16D80C1600BF4C35 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = SOURCE_ROOT; };
 		6832480816D8201C00BF4C35 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icons; sourceTree = "<group>"; };
 		6832480A16D829EC00BF4C35 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		6852A94417947418006F606B /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		6852A94517947418006F606B /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		686CBCCC15AC56370059F046 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		686CBCCD15AC56370059F046 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		68A4840A1778B89A005B7F4E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		68A4840C177E1820005B7F4E /* Scrobbler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scrobbler.h; sourceTree = "<group>"; };
+		68A4840D177E1820005B7F4E /* Scrobbler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scrobbler.m; sourceTree = "<group>"; };
 		68C7FCE515A5A3B100B94DF5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		68DC2E5D15C861F0004E3F54 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
 		68DC2E5E15C861F0004E3F54 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
@@ -112,6 +118,8 @@
 			children = (
 				682EB1D315A1E1A60060AC31 /* AppDelegate.h */,
 				682EB1D415A1E1A60060AC31 /* AppDelegate.m */,
+				6852A94417947418006F606B /* Common.h */,
+				6852A94517947418006F606B /* Common.m */,
 				68FA2DD716F34A8600A303F1 /* File.h */,
 				68FA2DD816F34A8600A303F1 /* File.m */,
 				686CBCCC15AC56370059F046 /* Menu.h */,
@@ -120,6 +128,8 @@
 				68DC2E5E15C861F0004E3F54 /* List.m */,
 				681E3D7016CD0462001FAE2B /* Player.h */,
 				681E3D7116CD0462001FAE2B /* Player.m */,
+				68A4840C177E1820005B7F4E /* Scrobbler.h */,
+				68A4840D177E1820005B7F4E /* Scrobbler.m */,
 				682EB1D615A1E1A60060AC31 /* MainMenu.xib */,
 				6832480816D8201C00BF4C35 /* icons */,
 				682EB1C815A1E1A60060AC31 /* Supporting Files */,
@@ -213,6 +223,8 @@
 				68DC2E5F15C861F0004E3F54 /* List.m in Sources */,
 				681E3D7216CD0462001FAE2B /* Player.m in Sources */,
 				68FA2DD916F34A8600A303F1 /* File.m in Sources */,
+				68A4840E177E1820005B7F4E /* Scrobbler.m in Sources */,
+				6852A94617947418006F606B /* Common.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

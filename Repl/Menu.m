@@ -123,6 +123,15 @@
     [rndMenuItem setState:state];
 }
 
+// Отметить скробблинг в меню
+- (void)markScrMenuItem:(NSInteger)state {
+    NSLog(@"Menu.markScrMenuItem -> state: %ld", state);
+    
+    // Пункт меню (тег "6" для пункта меню задан в редакторе, в файле интерфейса)
+    NSMenuItem *scrMenuItem = [statusMenu itemWithTag:6];
+    [scrMenuItem setState:state];
+}
+
 // Отметить кнопку "Пуск/Пауза"
 - (void)markPause:(NSInteger)pause {
     NSLog(@"Menu.markPause -> pause: %ld", pause);
