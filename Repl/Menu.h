@@ -39,6 +39,7 @@
 - (void)changeSuggest:(id)suggest;
 
 - (void)markRndMenuItem:(NSInteger)state;
+- (void)markScrMenuItem:(NSInteger)state;
 - (void)markPause:(NSInteger)pause;
 
 - (void)unlock;

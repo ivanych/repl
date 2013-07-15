@@ -127,6 +127,15 @@
     
     // Запомнить проигрываемый трек
     [list setPlayTrack:number];
+    
+    // Скробблить трек
+    NSInteger timestamp = [[NSDate date] timeIntervalSince1970];
+    if ([scrobbler scrFlag]) {
+        NSLog(@"Player.playTrack - scrobbling on");
+        
+        [scrobbler scrobble:timestamp artist:[list artist:number] title:[list title:number]];
+        
+    }
 }
 
 // Приостановить или продолжить проигрывание трека
@@ -198,5 +207,9 @@
     list = l;
 }
 
+// Связать плеер с скробблером
+- (void)setScrobbler:(id)s {
+    scrobbler = s;
+}
 
 @end

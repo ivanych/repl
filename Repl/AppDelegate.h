@@ -11,7 +11,7 @@
 #import "File.h"
 #import "List.h"
 #import "Player.h"
-
+#import "Scrobbler.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     // Графический интерфейс приложения (меню)
@@ -28,6 +28,9 @@
     
     // Плеер
     Player *player;
+    
+    // Скробблер
+    Scrobbler *scrobbler;
     
     // Конфиг
     NSUserDefaults *config;

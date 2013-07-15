@@ -11,6 +11,7 @@
 #import "File.h"
 #import "List.h"
 #import "Player.h"
+#import "Scrobbler.h"
 
 @implementation AppDelegate
 
@@ -25,6 +26,8 @@
     list = [[List alloc] init];
     // Плеер
     player =[[Player alloc] init];
+    // Scrobbler
+    scrobbler =[[Scrobbler alloc] init];
 
     // Связать меню со статусным меню
     [menu setStatusMenu:statusMenu];
@@ -40,6 +43,10 @@
     [player setMenu:menu];
     // Связать плеер cо списком
     [player setList:list];
+    // Связать плеер cо скробблером
+    [player setScrobbler:scrobbler];
+    // Связать скробблер с меню
+    [scrobbler setMenu:menu];
     
     // Конфиг
     config = [NSUserDefaults standardUserDefaults];
@@ -58,6 +65,22 @@
         NSLog(@"App.awakeFromNib - rndFlag: %ld", rndFlag);
         
         [list setRndFlag:rndFlag];
+    }
+
+    // Восстановить флаг скробблинга из конфига
+    NSInteger scrFlag = [config integerForKey:@"scrFlag"];
+    if (scrFlag) {
+        NSLog(@"App.awakeFromNib - scrFlag: %ld", scrFlag);
+        
+        [scrobbler setScrFlag:scrFlag];
+    }
+    
+    // Восстановить сессию из конфига
+    NSString * sessionKey = [config objectForKey:@"sessionKey"];
+    if (sessionKey) {
+        NSLog(@"App.awakeFromNib - sessionKey: %@", sessionKey);
+        
+        scrobbler.sessionKey = sessionKey;
     }
 }
 
@@ -173,6 +196,18 @@
     
     // Сохраняем флаг случайного режима в конфиг
     [config setInteger:[list rndFlag] forKey:@"rndFlag"];
+    [config synchronize];
+}
+
+// Переключить флаг скробблинга в last.fm
+- (IBAction)turnScrobbling:(id)sender {
+    NSLog(@"App.turnScrobbling --------------------------------");
+    NSLog(@"App.turnScrobbling -> sender: %@, ", sender);
+
+    [scrobbler turnScrFlag];
+    
+    // Сохраняем флаг скробблинга в конфиг
+    [config setInteger:[scrobbler scrFlag] forKey:@"scrFlag"];
     [config synchronize];
 }
 
